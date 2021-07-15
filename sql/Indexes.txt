@@ -1,0 +1,32 @@
+1. Peformance issue in table which is taking lot of time
+
+ 1. Check index fragmentation for the table. Run below query to know fragment % 
+   https://www.sqlskills.com/blogs/paul/sqlskills-sql101-rebuild-vs-reorganize/
+   https://www.se.com/se/en/faqs/FA234246/
+
+   SELECT dbschemas.[name] as 'Schema',
+    dbtables.[name] as 'Table',
+    dbindexes.[name] as 'Index',
+    indexstats.avg_fragmentation_in_percent,
+    indexstats.page_count
+    FROM sys.dm_db_index_physical_stats (DB_ID(), NULL, NULL, NULL, NULL) AS indexstats
+    INNER JOIN sys.tables dbtables on dbtables.[object_id] = indexstats.[object_id]
+    INNER JOIN sys.schemas dbschemas on dbtables.[schema_id] = dbschemas.[schema_id]
+    INNER JOIN sys.indexes AS dbindexes ON dbindexes.[object_id] = indexstats.[object_id]
+    AND indexstats.index_id = dbindexes.index_id
+    WHERE indexstats.database_id = DB_ID()
+    and dbtables.[name] = <Tablename>
+    ORDER BY indexstats.avg_fragmentation_in_percent desc
+  
+  SpaceRequired
+    Rebuilding an index requires building a new index before dropping the old index, regardless of the amount of fragmentation present in the old index. 
+    This means you need to have enough free space to accommodate the new index.
+    Reorganizing an index first squishes the index rows together to try to deallocate some index pages, and then shuffles the remaining pages in place to make their physical (allocation) order the same as the logical (key) order.
+
+  Fragmentation rules [When to rebuild an index and when to reorganize an index]
+    if an index has less than 1000 pages and is in memory, don’t bother removing fragmentation
+    if the index has:
+      less than 5% logical fragmentation, don’t do anything.
+      between 5% and 30% logical fragmentation, reorganize it (using DBCC INDEXDEFRAG or ALTER INDEX … REORGANIZE).
+      more than 30% logical fragmentation, rebuild it (using DBCC DBREINDEX or ALTER INDEX … REBUILD).
+  

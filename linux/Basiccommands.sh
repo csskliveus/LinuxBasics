@@ -15,3 +15,8 @@
 ls myfile2222222.txt #this will throw error
 
 ls myfile2222222.txt 2> myfileerror.txt # this will capture error message to a file
+
+tail /etc/group
+# Usage: tail [OPTION]... [FILE]...
+#Pint the last 10 lines of each FILE to standard output.
+

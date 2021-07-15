@@ -1,0 +1,15 @@
+-rw-rw-rw-
+
+first - is type of file
+rw-     is owners read,write and no execute permissions
+rw-     is ownergroup read,write and no execute permissions
+rw-     for others read,write and no execute permissions
+
+Read+Write+Execute 7
+Read+Write 7
+Read+Execute 6
+Read 4
+Write+Execute 3
+Write 2
+Execute 1
+Nopermissions 0

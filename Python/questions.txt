@@ -1,0 +1,81 @@
+https://www.bitarray.io/python-interview-questions/
+----------------------------------------------------------------------------
+Question 2: Is python use compiler or an interpreter to compile the code?
+  Answer: Python use Interpreter which compiles the code line by line and then after successfully compile of whole code it then converts the code into the machine executable code.
+----------------------------------------------------------------------------
+Question 3: What are Lists and Tuples in python?
+
+  Answer: 
+  List and Tuple in Python are the class of data structure. 
+
+  List and tuple both are the datatypes in Python which is used to store information. They are used to store any type of data.
+
+  SR.NO.	LIST	TUPLE
+  1	Lists are mutable. Tuples are immutable.
+  2	List Implication of iterations is Time-consuming. Tuple,	The implication of iterations is comparatively Faster
+  3	The list is better for performing operations, such as insertion and deletion.	Tuple data type is appropriate for accessing the elements
+  4	Lists consume more memory.	Tuple consume less memory as compared to the list
+  5	Lists have several built-in methods.	Tuple does not have many built-in methods.
+  6	The unexpected changes and errors are more likely to occur.	In tuple, it is hard to take place.
+
+  List = ['in','la','ca','us']
+  tuple = ('in','la','ca','us')
+----------------------------------------------------------------------------
+Question 4: what is a deep and shallow copy in python?
+  Answers: There are 2 ways to copy an object in python
+  1. Shallow copy: In this method, newly created object will store the address of parent object so if there is any change in data on any object it will be reflected in all object which is created by shallow copy. 
+      The syntax for shallow copy nebobj= obj.copy(parentobj)
+  2. Deep copy:  In a deep copy actual values of the parent object is copied into the newly created object so, any change in the child object will not affect the values of parent object. 
+      The syntax for deep copy newlyobject = copy.deepcopy(parentobj)
+----------------------------------------------------------------------------
+Question 5: What is lambda function in python
+  functions with no names or anonymous functions.
+----------------------------------------------------------------------------
+Question 6: what is *args and **kwargs in python ?
+  - *args is used to pass multiple values. This is used when we dont know how many values will be passed into method.
+        ### Declare a function
+        def fun(*args):  
+        for arg in args:      
+          print(arg) ### Call a function
+        fun("1 arg","2 arg","3 arg")  
+     
+  - **kwargs 
+    def fun(**kwargs):  
+      for key, value in kwargs.items():      
+        print (" {0} {1}".format(key, value))
+        ### Call a function
+        fun(key1 ='value1', key2 ='value2', key3='value3')
+
+Question 9: What is a pickle and unpickle in Python?
+  - Pickle is used to serialize an object in python and dump into a file. 
+  - Retrieving data from that file is known as unpickling.
+
+Question 10: What is map function in python? 
+  - Map function is used to iterate on a function and its arguments should be iterable.
+  
+  def fun(a,b):
+    return a+b 
+  ## call a function 
+  x = map(fun,("me","menot"),("you","younot"))
+  print (x)
+  print (list(x))
+
+Question 11: what is the use of // operator ? 
+  if whole number is needed as part of result after devision.We can use this
+
+    print(10/4)  this will give 2.5 value
+    print(10//4) this will give 2 as value
+    print(10/-4) this will give -2.5
+
+Question 12: What is multithreading and multiprocessing in python ? 
+  Multithreading and Multiprocessing
+  Multithreading: Multiple programs lives in a single processor and share the same memory space of the processor.
+  Multiprocessing: Python creates a seperate task for each program and assign it to different processors.
+
+Question 13: What is GIL in python ? 
+  GIL is global interpreter lock that allows one thread to take control of interpreter at a time.
+  Due to GIL multithreaded program will not work as efficiently as it should be, Although the program is multithreaded at one moment single thread will execute.
+
+Question 14: Why python use GIL? Or what problem it solves in python?
+  Every Object created in python has a reference count variable which keeps tracking the no of references that point to that object. 
+  This count variable is used by Garbage collector to manage memory if that count is zero means this variable not in use and memory is released from this object.
