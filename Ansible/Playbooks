@@ -1,0 +1,66 @@
+Ansible Playbooks offer a 
+ repeatable, 
+ re-usable, 
+ simple configuration management 
+ and multi-machine deployment system, one that is well suited to deploying complex applications. 
+
+  The playbooks in the ansible-examples repository illustrate many useful techniques
+  https://github.com/ansible/ansible-examples
+
+  Playbooks can:
+   1. Declare configuration.
+   2. Orchestrate steps for any manual process.
+   3. Launch tasks synchronously or asynchronously.
+
+  Syntax:
+   1. Yaml is used. 
+   2. Playbooks consists of one or more plays in an ordered list.
+  
+  Execution:
+   1. Playbook runs in order top to bottom.
+   2. Playbooks with multiple ‘plays’ can orchestrate multi-machine deployments, 
+      running one play on your webservers, then another play on your database servers, 
+        then a third play on your network infrastructure, and so on. 
+        At a minimum, each play defines two things:
+          - the managed nodes to target, using a pattern
+          - at least one task to execute.
+   By default, Ansible executes each task in order, 
+      one at a time, 
+      against all machines matched by the host pattern.
+
+  Idempotency:
+    Not all playbooks or modules are idempotent.
+
+  Playbook syntax example : 
+  <--------------------------------------------------------------------------------------------->
+  '''
+        ---
+    - name: Update web servers
+      hosts: webservers
+      remote_user: root
+
+      tasks:
+      - name: Ensure apache is at the latest version
+        ansible.builtin.yum:
+          name: httpd
+          state: latest
+      - name: Write the apache config file
+        ansible.builtin.template:
+          src: /srv/httpd.j2
+          dest: /etc/httpd.conf
+
+    - name: Update db servers
+      hosts: databases
+      remote_user: root
+
+      tasks:
+      - name: Ensure postgresql is at the latest version
+        ansible.builtin.yum:
+          name: postgresql
+          state: latest
+      - name: Ensure that postgresql is started
+        ansible.builtin.service:
+          name: postgresql
+          state: started
+  '''
+  <--------------------------------------------------------------------------------------------->

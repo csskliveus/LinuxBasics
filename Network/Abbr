@@ -1,0 +1,17 @@
+TCP - Transmission control protocol
+DHCP - Dynamic host configuration protocol
+
+
+NAT - Network address translation
+
+  SNAT and DNAT sits on either side of NAT device.
+
+  SNAT - Source Network address translation
+    - Traffic from private ip/ips to internet. Inside world tries to reach outside world.
+  StaticSNAT-
+    - When many internal private IP's are translated to single public IP, then it is called SSNAT.
+  DynamicSNAT-
+    - When many internal IP's got translated to multiple IP's, it is called dynamic SNAT.
+  DNAT - Dynamic Network address translation
+    - When outside world tries to reach private ip [inside world] in network.
+

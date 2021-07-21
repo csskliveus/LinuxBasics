@@ -1,0 +1,20 @@
+https://blog.aquasec.com/container-isolation-techniques?utm_campaign=General%20website&utm_medium=email&_hsmi=142452904&_hsenc=p2ANqtz-8pZGFg0Y85QUgSsTqXMU9eEI8ADP8bRBLqeiIlOCjhSBduQg0nV0c8YIzqnM0IF7DpdV8jFgsj-RyYT9cacniM-5qpBg&utm_content=142452904&utm_source=hs_email
+
+Containers and isolations on a high level: 
+
+Linux containers -
+  - Container runtimes like containerd (used by Docker or directly) or CRI-O isolate containers using Linux namespaces and use other operating system features such as cgroups, seccomp filters, and capabilities to restrict what the contained process can do. 
+  - All the containers running on a single VM share a single operating system kernel. 
+  - This is by far the most common use case.
+
+Sandbox-based containers 
+  - With a sandbox like Google gVisor, the contained processes still effectively share a kernel, 
+    but instead of using Linux features for isolation, 
+   *** a dedicated security sandbox is used to provide any resources **
+    (such as networking) and to arbitrate calls made by the application that require kernel resources.
+
+VM-based containers - 
+  - With software like AWS Firecracker, a hypervisor is used to provide isolation. 
+  ***- Generally lightweight VMs are used to minimize any performance impact. **
+  - Isolation is effectively the same as with any hypervisor setup, with the added advantage that many of the features of standard hypervisors, such as full virtual hardware support, can be disabled as they are not required.
+

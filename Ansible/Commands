@@ -1,0 +1,27 @@
+Copy public ssh keys to remote agent
+
+  cd /home/testuser/.ssh
+
+  ssh-copy-id -i id_rsa.pub ansadmin@10.79.4.5
+
+
+Ansible commands
+  ansible all -m ping  [ping all servers]
+
+# ansible groups
+  ansible db:web_server -m ping [groups]
+
+# Adhoc commands with ansible groups
+  command format
+  ansible [-i prod_inv] server_name:group1:group2 -m module 
+
+  commands example
+  - ansible 10.79.4.5 -a '/bin/hostname'
+  - ansinble db:web_serevr -m shell -a "uptime" [execute 'uptime' command in shell of db and web_servers.]
+  - ansinble db:web_serevr -m shell -a "free -m" [execute 'free -m' command in shell of db and web_servers.]
+  
+  run ansible commands on selected inventory file
+
+  - ansible -i prod_inv -m shell -a "uptime" [execute 'uptime' command in shell of 'prod_inv' inventory file.]
+
+Module: Program written to address/execute task

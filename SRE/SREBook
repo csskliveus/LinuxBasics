@@ -1,0 +1,109 @@
+Part 2 : Principles
+
+Embracing Risk:
+  Its looks SRE through the lens of risk 
+    - its assessment, 
+    - management 
+    - and the use of error budgets 
+    to provide usefully neutral approaches in service management.
+
+Service level objectives: [SLO]
+  This is another foundational conceptual unit of SRE. 
+  This attempts to distangle indicators from objectives from agreement,
+  examines how SRE uses each of these terms, and provides some recommendations
+  on how to find useful metrics for your own application.
+
+Eliminating toil:
+  Define toil as mundane, 
+  repetitive operational work providing no enduring value, 
+  which scales linearly with service growth. 
+
+Monitoring:
+  Monitoring is an absolutely essential component of doing right thing in production.
+  If you dont know what is happening, you are blind to what is happening, you cant be reliable.
+
+Key principle of software engineering
+ - reliability oriented engineering
+ - simplicity is a quality that, once lost, can be difficult to recapture. 
+
+Extreme reliability comes at a cost. 
+  Maximizing stability limits how fast new features can be developed 
+  and how quickly products can be delivered to users.
+
+when we set an availability target of 99.99%,we want to exceed it, but not by much: 
+  that would waste opportunities to add features to the system, 
+  clean up technical debt, 
+  or reduce its operational costs.
+
+As standard practive at google, we are often best served by identifying an objective metric
+  to represent the property of the system we want to optimize.
+  By setting a target, we can assess our current performance and track
+  improvements or degradations over time. 
+
+How to engineer greater reliability into google systems and identify appropriate level of tolerance for the services to run.
+
+We strive to make a servie reliable enough, but no more reliable than it needs to be.
+
+  availability = uptime/(uptime+downtime)
+
+  Aggregate availability = successful requests / total requests
+
+Risk Tolerance:
+ - Risk tolerance of services is typically built directly into the basic product or service definition.
+ - SRE's must work with product owners to turn a set of business goals into explicit objectives to which we can engineer.
+ - 
+
+Indentifying the risk tolerance of consumer service: 
+  There are many factors to consider when assessing the risk tolerance of services
+
+  - What level of availability is required ? 
+  - Do different types of failures have different effects on the serice ? 
+  - How can we use the service cost to help locate a service on the risk continuum ? 
+  - What other service metrics are important to take into account ? 
+
+Target level of availability:
+ The target level of availability for a given Google service usually depends on the function it provides and how the service is positioned in the marketplace.
+ - What level of service will the users expect ? 
+ - Does this service tie directly to revenue ? 
+ - Is this a paid service or free service ? 
+ - If there are competitors in the marketplace, what level of service do those competitors provide ? 
+ - Is this service targeted at consumers or at enterprises ? 
+
+Types of failures:
+ - How resilient is our business to service downtime ? 
+ - Which is worse for the service ? 
+     constant low rate of failures ? or an occasional full-site outage ? 
+ - 
+
+Cost
+ Cost is often the key factor in determining the appropriate availability target for a service.
+  - If we were to build and operate these systems to one more nine of availability, what would our incremental increase in revenue be ? 
+  - Does this additional revenue offset the cost of reaching that level of reliability ? 
+
+Other service metrics:
+ Examining the risk tolerance of service in relation to metrics besides availability is often fruitful. 
+ Understanding which metrics are fruitful and which metrics aren't important provides us with degress of freedom when attempting to take thoughtful risks.
+
+Identifying the risk tolerance of infrastructure service
+ Infrastructure components have multiple clients, often with varying needs. 
+
+Target level of availability
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+You can control the use of 'become' with play or 
+ - task directives, 
+ - connection variables, or at the command line.

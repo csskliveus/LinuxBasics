@@ -1,0 +1,54 @@
+Error budgets
+https://sre.google/sre-book/embracing-risk/
+
+SRE performance is depedendant on reliability of the system.
+  
+  - The product developers have more visibility into the time and effort involved in writing and releasing their code, while the SREs have more visibility into the service’s reliability
+  -  Information asymmetry between the two teams further amplifies this inherent tension.
+
+  Software fault tolerance:
+   - How hardened do we make the software to unexpected events ? 
+      Too little, and we have a brittle, unsuable product ? 
+    
+  Testing:
+   - Not enough testing and you have embarrassing outages ?
+   - privacy data leaks ? 
+   - Too much testing, you might lose your market.
+  
+  Push frequency:
+   - Every push is risky. 
+  
+  Canary duration and size:
+   - How long do we wait, and how big is the canary ? 
+  
+
+Forming your error budget: 
+ - In order to base these decisions on objective data, the two teams jointly define a quarterly error budget based on SLO. 
+ - The error budget provides a clear, 
+     objective metric that determines how unreliable the serivce is allowed to be within a single quarter. 
+     This metric removes the politics from negotiations between SRE's and the product developers when deciding how much risk is allowed. 
+    Our practice is then as follows:
+     1. Product management defines SLO, which sets an expectation of how much uptime the service should have per quarter. 
+     2. The actual up time is measured by monitoring system.
+     3. Difference between PM SLO for 'uptime' and actual 'uptime' from monitoring system 
+        is the budget. 
+        As long as 'uptime' measured is above SLO / as long as there is error budget remaining, new releases can be pushed. 
+
+
+If SLO violations occur frequently enough to expend the error budget, 
+  - releases are temporarily halted 
+  - while additional resources are invested in system testing and development to make the system more resilient, 
+  - improve its performance, and so on
+
+  - if product development wants to skimp on testing or increase push velocity 
+    and SRE is resistant, the error budget guides the decision.
+  - When budget is large, developers can take more risks. 
+  - When budget is nearly drained, product developers themselves will push for more testing.
+
+Error budgets make it easier to decide the rate of releases and to effectively defuse discussions about outages with stakeholders, and allows multiple teams to reach the same conclusion about production risk without rancor.
+
+
+
+
+   
+

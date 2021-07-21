@@ -1,0 +1,35 @@
+Impossible to manage service correctly, without understanding
+ - which behaviors really matter for that service
+ - how to measure and evaluate those behaviors. 
+
+ SLI - Service level indicators
+ SLO - Service level objectives
+ SLA - Service level agreements
+
+Service level indicator - a carefully defined 'quantitative measure of some aspect' of the level of service.
+  - Request latency
+  - error rate
+  - system throughput
+  - availability
+
+Service level objective
+  - Target value
+  - A natural structure for SLOs is thus 
+    - SLI ≤ target / ower bound ≤ SLI ≤ upper bound
+    - or lower bound ≤ SLI ≤ upper bound.
+
+  - Ex: Lets say the target set is 100 milliseconds. 
+      Setting a target will motivate people to write low-latency code and techniquies that helps in latency. 
+    
+  Choosing and publishing SLOs to users sets expectations about how a service will perform.
+
+Service level agreement-SLA
+  - Finally, SLAs are service level agreements: 
+    an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs they contain.
+
+
+Standardize 
+  Aggregation intervals: “Averaged over 1 minute”
+  Aggregation regions: “All the tasks in a cluster”
+  How frequently measurements are made: “Every 10 seconds”
+  Which requests are included: “HTTP GETs from black-box monitoring jobs”

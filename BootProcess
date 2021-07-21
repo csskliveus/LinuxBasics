@@ -20,25 +20,52 @@ The boot sector is really the first stage of the boot loader. There are 3 boot l
   3.LILO
 
 GRUB2 [GRand Unified Bootloader], version 2: 
-  1. The primary function of GRUB is to get Linux kernel loaded into memory and running. Both GRUB1 and GRUB2 do the same job.
-  2. GRUB2 is the primary boot loader for most current linux distributions. 
-  3. GRUB2 makes computer smart enough to find the operating system kernel and load it into memory.
-  4. GRUB has been designed to be compatible with the multiboot specification which allows GRUB to boot many versions of Linux and other free operating systems; it can also chain load the boot record of proprietary operating systems.
+    1. The primary function of GRUB is to get Linux kernel loaded into memory and running. Both GRUB1 and GRUB2 do the same job.
+    2. GRUB2 is the primary boot loader for most current linux distributions. 
+    3. GRUB2 makes computer smart enough to find the operating system kernel and load it into memory.
+    4. GRUB has been designed to be compatible with the multiboot specification which allows GRUB to boot many versions of Linux and other free operating systems; it can also chain load the boot record of proprietary operating systems.
 
-  5. GRUB1 is considered legacy.
-  6. GRUB2 provides the same boot functionality of GRUB1 but GRUB2 is also a mainframe-like-command based pre-os environment and allows more flexibility during pre-boot phase.
-
+    5. GRUB1 is considered legacy.
+    6. GRUB2 provides the same boot functionality of GRUB1 but GRUB2 is also a mainframe-like-command based pre-os environment and allows more flexibility during pre-boot phase.
+ https://opensource.com/article/17/2/linux-boot-and-startup
   Stage1:
-  1. The bootstrap code i.e GRUB2 stage 1, is very small because it must fit into the first 512 byte sector on the hard drive along with partition table.
-  2. The total amount of space allocated for the actual bootstrap code in a classic generic MBR is 446 Bytes.
-  3. 446 Byte file for the stage 1 is named boot.img and does not contain the partition table which is added to the boot record separately. 
-  4. The solo purpose of stage 1 is to load stage 1.5 GRUB.
-  5. After loading GRUB stage 1.5 into RAM, stage 1 turns controle over to stage 1.5.
-  6. MBR sector is 0.
+    1. The bootstrap code i.e GRUB2 stage 1, is very small because it must fit into the first 512 byte sector on the hard drive along with partition table.
+    2. The total amount of space allocated for the actual bootstrap code in a classic generic MBR is 446 Bytes.
+    3. 446 Byte file for the stage 1 is named 'boot.img' and does not contain the partition table which is added to the boot record separately. 
+    4. The solo purpose of stage 1 is to load stage 1.5 GRUB.
+    5. After loading GRUB stage 1.5 into RAM, stage 1 turns controle over to stage 1.5.
+    6. MBR sector is 0.
   
   Stage1.5: 
-  1. 1.5 GRUB must be located in the space between boot record itself and first partition of the drive. 
-  2. The first partition on the hard drive begins at sector 63 and with MBR in sector 0, that leaves 6 512 bytes sectors-31,744 bytes - in which to store the core.img file which is stage 1.5 of GRUB. 
+    1. 1.5 GRUB must be located in the space between boot record itself and first partition of the drive. 
+    2. The first partition on the hard drive begins at sector 63 and with MBR in sector 0, 
+        that leaves 6 512 bytes sectors-31,744 bytes - in which to store the 'core.img' file which is stage 1.5 of GRUB. 
+    3. The core image file is 25,389 bytes, so there is plenty of space available between MBR and the first disk partition.
+        it can have enough code to contain a few common filesystem drivers. 
+    4. Stage2 of GRUB2 can be located on a standard EXT file system but it cannot be located on a logical volume. 
+  Stage2:
+    1. All of the files for GRUB stage 2 are located in the /boot/grub2 directory and several subdirectories. 
+    2. GRUB2 does not have an image file like stages 1 and 1.5. 
+    3. Instead, it consists mostly of runtime kernel modules that are loaded as needed from the /boot/grub2/i386-pc directory.
+
+    4. Main function of GRUB2 stage2 is to locate and load a linux kernel into RAM and return control of computer to the kernel.
+    5. Kernel and its associated files are located in /boot directory. 
+    6. The kernel files are identifiable as they are all named starting with vmlinuz.
+    7. You can list the contents of the /boot directory to see the currently installed kernels on your system.
+
+  Kernel:
+    1. All of the kernels are in a self-extracting, compressed format to save space. 
+    2. The kernels are located in the /boot directory, along with inital RAM disk image and device maps of the hard drives.
+    3. Once kernel extracts itself, it loads 'systemd' 
+        [systemd is a software suite that provides an array of system components for Linux operating systems.
+        Its main aim is to unify service configuration and behavior across Linux distributions.
+        systemd's primary component is a "system and service manager"—an init system used to bootstrap user space and manage user processes]
+  
+  The startup process:
+    systemd: 
+    1. Mother of all process and it is responsible for bringing the linux host up to state in which productive work can be done. 
+    2. 
+
 
 
 
