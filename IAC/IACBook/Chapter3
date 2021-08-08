@@ -1,0 +1,22 @@
+These are some characteristics of scripts and tasks that help to support reliable unat‐
+tended execution:
+
+Idempotent
+  It should be possible to execute the same script or task multiple times without bad effects.
+Pre-checks
+  A task should validate its starting conditions are correct, and fail with a visible and useful error if not, leaving things in a usable state.
+Post-checks
+  A task should check that it has succeeded in making the changes. This isn’t just a
+  matter of checking return codes on commands, but proving that the end result is
+  there. For example, checking that a virtual host has been added to a web server
+  could involve making an HTTP request to the web server.
+Visible failure
+  When a task fails to execute correctly, it should be visible to the team. This may
+  involve an information radiator and/or integration with monitoring services
+  (covered in “What Is An Information Radiator?” on page 88 and “Alerting: Tell
+  Me When Something Is Wrong” on page 87).
+Parameterized
+  Tasks should be applicable to multiple operations of a similar type. For example,
+  a single script can be used to configure multiple virtual hosts, even ones with dif‐
+  ferent characteristics. The script will need a way to find the parameters for a particular virtual host, and some conditional logic or templating to configure it for
+  the specific situation

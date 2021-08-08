@@ -1,0 +1,23 @@
+The principles of infrastructure as code for services can be summarized as:
+  • The service can be easily rebuilt or reproduced.
+  • The elements of the service are disposable.
+  • The infrastructure elements managed by the service are disposable.
+  • The infrastructure elements managed by the service are always changing.
+  • Instances of the service are configured consistently.
+  • Processes for managing and using the service are repeatable.
+  • Routine requests are fulfilled quickly, with little effort, preferably through selfservice or automatically.
+  • Complex changes can be made easily and safely.
+
+Sharing services between teams
+  Some questions to consider when deciding whether to share service instances, or support multiple instances:
+    • Do the customizations that teams need impact other teams using the service
+        instance? If so, multiple instances may be best.
+    • Can one team’s use of the service impact performance for other teams? If so,
+        multiple instances can prevent problems.
+    • Does the service involve executing code provided by individual teams? Does it
+        effectively isolate the execution environment for this code? (Remember that con‐
+        tainers and even VMs don’t offer bulletproof isolation between processes!)
+    • Will the service hold data or credentials that should not be available to all of its
+        users? How strong are the controls to protect this data?
+    • Is there a compelling need for teams to share data or content between them? In
+        this case, shared instances may be a better fit.

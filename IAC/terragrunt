@@ -1,0 +1,24 @@
+https://dev.to/paddymorgan84/enhancing-terraform-with-terragrunt-540o
+Advantages:
+
+1. DRY Providers: 
+  You can use the generate block in your root terragrunt.hcl file to inject common configuration files.
+
+2. Executing on multiple modules.
+  terragrunt run-all apply
+  terragrunt run-all init
+
+3. parallelism - We can control how many modules can be executed in parallel.
+
+  terragrunt run-all apply --terragrunt-parallelism 1 
+
+4. DRY CLI flags
+
+5. Before and after hooks
+
+6. Auto init
+  Terragrunt will auto init terraform modules
+
+7. Modules can be selected and excluded for execution.
+  terragrunt run-all apply --terragrunt-exclude-dir registry
+  terragrunt run-all apply --terragrunt-include-dir registry

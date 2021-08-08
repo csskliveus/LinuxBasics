@@ -1,0 +1,22 @@
+What exactly is the value of automation ? 
+ 1. Consistency
+ 2. A Platform
+ 3. Faster Repairs
+ 4. Faster Action
+ 5. Time saving
+
+
+
+  2. A Platform: 
+    - Designed and done properly, automatic systems also provide a platform that can be extended, 
+      applied to more systems, or perhaps even spun out for profit.
+    - Platform also centralizes mistakes.
+      - In other words, a bug fixed in the code will be fixed there once and forever, 
+        unlike a sufficiently large set of humans performing the same procedure, as discussed previously.
+  3. Faster Repairs
+    - If automation runs regularly and successfully enough, the result is a reduced mean time to repair (MTTR) for those common faults.
+    - Problems that occur in actual production are most expensive to fix, both in terms of time and money, 
+        which means that an automated system looking for problems as soon as they arise has a good chance of lowering the total cost of the system, 
+        given that the system is sufficiently large.
+  4. Faster Action
+    - 

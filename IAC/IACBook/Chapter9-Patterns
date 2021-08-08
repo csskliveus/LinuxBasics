@@ -1,0 +1,79 @@
+
+Antipattern:
+
+1. Handcrafted Infrastructure
+  - Quite often, teams will script server creation but use an interactive interface to configure networking and allocate storage.
+  - Changes made manually with an interactive GUI or tool aren’t easily repeatable, and lead to inconsistency between environments.
+  - Organizations that work this way often find they need to take extra time to manually test and inspect each environment after it’s built.
+
+2. Per-Environment Definition Files
+  - A simplistic way of managing multiple, similar environments is 
+      to have a separate definition file for each environment, 
+      even when the environments are used to run different instances of the same application or service.
+  - With this approach, we can copy files and make changes to allign with new environment. 
+  - When a fix, improvement, or other change is made, 
+    it is made by hand to each of the separate definition files.
+
+  This dependency on manual effort to keep multiple files up to date and consistent is the weakness of per-environment definition files
+
+
+Pattern:- 
+  - A more effective approach is to use a single definition file 
+      across all of the environments that represent the same application or service.
+  - The file can be parameterized to set options specific to each environment. 
+  - This makes it easy to build and run multiple instances of an infrastructure stack.
+
+Practice: Test and Promote Stack Definitions
+
+Selfservice environments:
+  - Environment and service instances defined through a common definition file can be provisioned through self-service. 
+  - Rather than requiring infrastructure team members to take time to set up services and infrastructure, a team can use a predefined, welltested template to spin up their own instance
+  - It’s important that self-service provisioning be supported by a process for updates.
+
+Organizing infrastructure:
+  - Infrastructure is normally composed of different resources. 
+  - Interdependecies
+  - Sharing networking devices
+
+  This section looks at some ways to organize infrastructure. 
+
+  A. Antipattern: 
+    1. Monolithic Stack / Monolithic state file:
+      - The difficulty of a monolithic definition is that it becomes cumbersome to change.
+      - It is will become very risky to make changes to the environment.
+
+    2. Avoid “Lift and Shift” When Migrating Infrastructure.
+  
+  B. Dividing an Application Environment into Multiple Stacks
+    1. Multitier applications can be divided into multiple stacks to allow each tier to be changed independently.
+  
+  C. Practice: Manage Application Code and Infrastructure Code Together
+
+  D. Sharing infrastructure elements
+      Few approaches that some teams use to get around pitfalls in shared infrastructure.
+      1. Versioning of shared modules
+            Teams can opt-in to updates as they are released, so they can adopt newer versions of modules as time permits.
+      2. Copy rather than share
+            Teams maintain templates for application and infrastructure code, and copy the files as needed to create new applications, and fold in improvements as they
+            become available.
+      3. Optional sharing
+            Teams use a shared module, but have the option to write alternative modules if it makes more sense for their needs.
+      4. Overridable modules
+            Modules are designed in a way that makes it easy for application teams to customize them and override behavior as needed.
+          
+  c. Practice: Align Infrastructure Design with the Scope of Change
+      - Clearly there are trade-offs to consider when deciding how to split infrastructure into stacks. 
+      - A division that makes sense in one organization may not make sense in another, depending on the team structures and on the services that the infrastructure
+        supports.
+      - Teams that provide services to other teams should make sure those other teams can 
+           customize and configure infrastructure code/configurations without involving the providing team. 
+           The model for this is public cloud vendors. 
+           These vendors provide APIs and configuration, rather than having a central team make configuration changes on behalf of their customers.
+
+  d. Example: An Infrastructure Design for Microservices
+      - Good guiding principle when considering the breakdown is the scope : 
+         - Consider the types of changes that are made often, and those that are the most difficult and risky.
+         - Then look at the parts of the infrastructure that are impacted by each of those changes. 
+         - The most effective structures will put those parts together. 
+ 
+  

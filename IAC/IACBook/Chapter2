@@ -1,0 +1,66 @@
+What Is a Dynamic Infrastructure Platform?
+  A dynamic infrastructure platform is a system that provides computing resources,
+  particularly servers, storage, and networking, in a way that they can be programmati‐
+  cally allocated and managed.
+
+Table 2-1. Examples of dynamic infrastructure platforms
+  Type of Platform Providers or Products
+  Public IaaS cloud -  AWS, Azure, Digital Ocean, GCE, and Rackspace Cloud
+  Community IaaS cloud - Cloud services shared between governmental departments
+  Private IaaS cloud - CloudStack, OpenStack, and VMware vCloud
+  Bare-metal cloud - Cobbler, FAI, and Foreman
+
+Requirements for a dynamic infrastructure platform
+  1. Programmable
+  2. On-demand
+  3. Self-service
+  
+  Programmable: 
+    - The dynamic infrastructure platform must be programmable. 
+    - A user interface is handy, and most virtualization products and cloud providers have one. 
+    - But scripts,software, and tools must be able to interact with the platform, and this requires a pro‐gramming API.
+  
+  On-Demand:
+    - It is essential for infrastructure as code that the dynamic infrastructure platform allows resources to be created and destroyed immediately.
+  
+  Self-service:
+    - Self-service adds a bit more onto the on-demand requirement for the infrastructure platform. 
+    - Not only should infrastructure users be able to have resources quickly, they must have the ability to tailor and customize those resources to their requirements.
+
+Infrastructure resources provided by the platform:
+  Infrastructure management have many moving parts. There are 3 key building blocks provided by dyanmic infrastructure platform.
+    1. compute
+    2. storage
+    3. network
+
+Deciding on dynamic infrastructure platform
+  Public or private
+    The number one concern with moving to public cloud is usually security. 
+  Legal constriants on hosting locations
+    - Some organizations have constraints around where their data and systems can be hosted.
+    - Systems contracted by governmental organizations may be required to be hosted in the same country, 
+        or might be forbidden to be hosted in certain others.
+      - For example, it is illegal (as of this writing) for systems running in Europe to store user data on computers running in countries such as the United States that don’t have strong personal privacy laws. 
+  Cloud Portability:
+    - One requirement often comes up : avoiding lock-in to a single cloud vendor
+      - It is important to be reliastic about what can be achieved in terms of portability.
+  Deeper and stronger understanding of the system:
+    - For an IT professional, 
+      - the deeper and stronger your understanding of how the system works down the stack and into the hardware, 
+      the more proficient you’ll be at getting the most from it.
+      - Example: 
+          Netflix team knew that a percentage of AWS instances, when provi‐sioned, will perform much worse than the average instance, 
+          whether because of hard‐ware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. 
+          So they wrote their provisioning scripts to immedi‐ately test the performance of each new instance. 
+          If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.
+    - Understanding storage options and networking is useful to ensure that disk reads and writes dont become a bottleneck.
+      - It is not a simple matter of chosing the fastest type of storage option available, 
+      - selecting high performance local SSD may have implications for portability, cost and availability.
+
+Conclusion
+
+  - Software and infrastructure should be architec‐ted, designed, and implemented with an understanding of the true architecture of the
+hardware, networking, storage, and the dynamic infrastructure platform.
+  - An infrastructure team should seek out and read through every whitepaper, article, conference talk, and blog post they can find about the platform they’re using.
+  - Bring in experts from your vendor to review your systems, from high-level architecture down to implementation details.
+

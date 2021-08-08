@@ -1,0 +1,36 @@
+Network Watcher is an Azure service that combines tools in a central place to diagnose the health of Azure networks. The Network Watcher tools are divided into two categories:
+
+  Monitoring tools
+  Diagnostic tools
+
+  1. Monitoring tools
+      Network Watchers provides three monitoring tools:
+        Topology
+        Connection Monitor
+        Network Performance Monitor
+
+
+      TopologyTool: 
+        The topology tool generates a graphical display of your Azure virtual network, its resources, its interconnections, and their relationships with each other.
+
+      ConnectionMonitor:
+        The Connection Monitor tool provides a way to check that connections work between Azure resources. 
+        To check that two VMs can communicate if you want them to, use this tool.
+        This tool also measures the latency between resources.
+
+      What is the Network Performance Monitor tool?
+        The Network Performance Monitor tool enables you to track and alert on latency and packet drops over time. 
+        It gives you a centralized view of your network.
+        You can use Network Performance Monitor to monitor endpoint-to-endpoint connectivity:
+          Between branches and datacenters.
+          Between virtual networks.
+          For your connections between on-premises and the cloud.
+          For Azure ExpressRoute circuits.
+        
+  2. Diagnostic tools
+    1. IP flow verify
+    2. Next hop
+    3. Effective security rules
+    4. Packet capture
+    5. Connection troubleshoot
+    6. VPN troubleshoot

@@ -74,8 +74,11 @@ Question 12: What is multithreading and multiprocessing in python ?
 
 Question 13: What is GIL in python ? 
   GIL is global interpreter lock that allows one thread to take control of interpreter at a time.
-  Due to GIL multithreaded program will not work as efficiently as it should be, Although the program is multithreaded at one moment single thread will execute.
+  Due to GIL multithreaded program will not work as efficiently as it should be, 
+  Although the program is multithreaded at one moment single thread will execute.
 
 Question 14: Why python use GIL? Or what problem it solves in python?
   Every Object created in python has a reference count variable which keeps tracking the no of references that point to that object. 
   This count variable is used by Garbage collector to manage memory if that count is zero means this variable not in use and memory is released from this object.
+
+

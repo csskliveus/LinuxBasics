@@ -1,0 +1,55 @@
+What is Azure Resource Manager?
+  Azure Resource Manager is a service provided by Azure to provide management and application deployment in Azure.
+  The resource manager provides the management layer that helps the developer to create, modify or delete the resources in the Azure subscription account. 
+
+1. What do you understand by availability set ? 
+  Availability set is nothing by logical grouping of VMS.
+    Each VM in the availability set is assigned 2 kinds of domains in Azure
+    1. Fault domain
+    2. Update domain
+  
+  Fault domain: All VMS share a common power source and common network switch.
+    The VMs within availability sets are separated across up to 3 fault domains by default. 
+    This separation of VMs in fault domains helps our applications to be available by reducing impacts of network outages, power interruptions, and certain hardware failures.
+  Update domain:
+    Grouping of VM's and underlying hardware which are eligible to be rebooted at the same time.
+
+  Azure provides flexibility to configure up to 3 fault domains and 20 update domains for an availability set.
+
+2. Azure storage key
+    Used for validating access for azure storage. 
+      2 types of azure storage
+        1. Primary access key
+        2. Secondary access key
+  
+3. Azure blob storage
+    - Object storage solution provided by Microsoft for the cloud.
+    - Blob - "Binary large object" 
+    - Azure blob have 3 components
+      - Storage account
+        - Container
+          - Blob
+             - Block blob - 
+             - Page blob - frequent read/write operations
+             - Append blob - meant for logging data in log files.
+
+4. Azure storage types
+    1. Blob service
+    2. Table storage - This type of storage lets user deploy their applications with semi-structured data and a NoSQL-based key-value store.
+    3. Queue storage - This storage provides a message queue system for handling large workloads by letting users develop and build flexible and modular applications.
+    4. File storage  - This storage type provides features of file sharing that are accessible using SMB (Server Message Block) Protocol. The data in this storage is protected by HTTPS and SMB 3.0 Protocol.
+
+5. 
+Azure Storage Queue	                                                 Azure Service Bus Queue
+  Here, the FIFO (First In First Out) ordering is not guaranteed.	    The FIFO order is guaranteed for the messages by means of sessions.
+  Sessions are not supported.	                                        Sessions that are messaging level are supported here.
+  Here, only the “At Least Once delivery” model is supported.	        This supports “At least once”, “Atmost once” and “Exactly once” delivery models for the messages.
+  There is no automatic detection of duplicates here.	                Automatic duplicate detection is supported here.
+  Does not support dead lettering.	                                  Supports dead lettering.
+  The size of the message is 64KB.	                                  The size of the message is 256KB.
+  Supports one-to-one delivery of messages.	                          Supports both one to one and one-to-many deliveries of messages.
+  The transaction is not supported.	                                  The transaction is supported here.
+  This queue supports only batch receive.	                            This supports both batch send and batch receive of messages.
+  The behavior of receiving messages is non-blocking.	                The behavior can be either blocking or non-blocking based on the configuration.
+
+6. 

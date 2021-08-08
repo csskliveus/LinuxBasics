@@ -25,3 +25,6 @@ Ansible commands
   - ansible -i prod_inv -m shell -a "uptime" [execute 'uptime' command in shell of 'prod_inv' inventory file.]
 
 Module: Program written to address/execute task
+
+
+# WinRM is a management protocol used by windows to remotely communicate with another server.

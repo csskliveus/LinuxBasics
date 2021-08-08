@@ -1,0 +1,28 @@
+
+
+Control node
+  - Any machine with Ansible installed. 
+  - You can run Ansible commands and playbooks by invoking the ansible or ansible-playbook command from any control node. 
+  - You can use any computer that has a Python installation as a control node - laptops, shared desktops, and servers can all run Ansible. 
+  - However, you cannot use a Windows machine as a control node. You can have multiple control nodes
+
+Managed node
+  - The network devices (and/or servers) you manage with Ansible. 
+  - Managed nodes are also sometimes called “hosts”. 
+  - Ansible is not installed on managed nodes
+
+Inventory
+  - List of managed nodes.
+  - An inventory file is also sometimes called a hostfile. 
+
+Collections
+  - Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins.
+
+Modules:
+  - Unit of code ansible executes.
+
+Tasks:
+  - The untis of action in Ansible.
+
+Playbooks:
+  - Ordered list of tasks.

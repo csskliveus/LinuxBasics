@@ -1,0 +1,12 @@
+Monitoring:
+  Collecting
+  processing
+  aggregating
+  displaying real-time quantitative data about a system, such as query counts and types, error counts and types, processing times, and server lifetimes
+
+
+Why monitoring
+  1. Analyzing long-term trends
+  2. Comparing over time or experitment groups
+  3. Alerting
+  4. Building dashboards

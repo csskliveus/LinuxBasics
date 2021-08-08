@@ -1,0 +1,70 @@
+1. What is IAC ? 
+
+  Infrastructure as code is an approach to infrastructure automation based on 'practices from software development'.
+
+2. It emphasizes 
+   - consistent, 
+   - repeatable routines for provisioning 
+   - changing systems and their configuration.
+
+3. Software development tools like version controlling can be applied. 
+  development practices 
+
+4. Goals of infrastructure as code: 
+    - IT infrastructure supports and enables change, rather than being an obstacle or a constraint.
+    - Changes to the system are routine, without drama or stress for users or IT staff.
+    - IT staff spends their time on valuable things that engage their abilities, not on routine, repetitive tasks.
+    - Users are able to define, provision, and manage the resources they need, without needing IT staff to do it for them.
+    - Teams are able to easily and quickly recover from failures, rather than assuming failure can be completely prevented.
+    - Improvements are made continuously, rather than done through expensive and risky “big bang” projects.
+    - Solutions to problems are proven through implementing, testing, and measuring them, rather than by discussing them in meetings and documents.
+
+5. Challenges with dynamic infrastructure that IAC addresses:
+    - Server Sprawl
+        Servers growing faster than the ability of the team to manage them as well as they would like.
+    - Configuration Drift
+    - Snowflake Servers
+    - Fragile infrastructure
+        Infrastructure is easily disrupted and not easily fixed.
+    - Erosion
+        The Heroku folks give these examples of forces that can erode a system over time:
+          • Operating system upgrades, kernel patches, and infrastructure software (e.g.,Apache, MySQL, SSH, OpenSSL) updates to fix security vulnerabilities
+          • The server’s disk filling up with logfiles.
+          • One or more of the application’s processes crashing or getting stuck, requiring someone to log in and restart them.
+          • Failure of the underlying hardware causing one or more entire servers to go down, taking the application with it.
+
+Principles of IAC:
+  - Systems can be easily reproduced.
+  - Systems are disposable.
+  - Systems are consistent.
+  - Processes are repeatable.
+  - Design is always changing.
+
+Versioning all the things:
+  - Traceability
+  - Rollback
+  - Correlation
+  - Visibility
+  - Actionability
+
+
+The hallmark of an infrastructure team’s effectiveness 
+  - is how well it handles changing requirements. 
+  - Highly effective teams can  
+      - handle changes and new requirements easily
+      - breaking down requirements into small pieces and piping them through in a rapid stream of low-risk, low-impact changes.
+
+Some signals that a team is doing well:
+  • Every element of the infrastructure can be rebuilt quickly, with little effort.
+  • All systems are kept patched, consistent, and up to date.
+  • Standard service requests, including provisioning standard servers and environ‐
+  ments, can be fulfilled within minutes, with no involvement from infrastructure
+  team members. SLAs are unnecessary.
+  • Maintenance windows are rarely, if ever, needed. Changes take place during
+  working hours, including software deployments and other high-risk activities.
+  • The team tracks mean time to recover (MTTR) and focuses on ways to improve
+  this. Although mean time between failure (MTBF) may also be tracked, the team
+  does not rely on avoiding failures.8
+  • Team members feel their work is adding measurable value to the organization.
+
+

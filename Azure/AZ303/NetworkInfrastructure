@@ -1,0 +1,164 @@
+1. Connect your on-premises network to Azure with VPN Gateway
+    - VPNs use an encrypted tunnel within another network. 
+    - They're typically deployed to connect two or more trusted private networks to one another over an untrusted network (typically the public Internet). 
+    - Traffic is encrypted while traveling over the untrusted network to prevent eavesdropping or other attacks.
+
+  Azure VPN Gateways:
+    - Connect on-premises datacenters to Azure virtual networks through a site-to-site connection.
+    - Connect individual devices to Azure virtual networks through a point-to-site connection.
+    - Connect Azure virtual networks to other Azure virtual networks through a network-to-network connection.
+
+
+  VPN gateway sizes
+  The capabilities of your VPN gateway are determined by the SKU or size that you deploy. This table shows the main capabilities of each available SKU:
+
+  VPN GATEWAY SIZES
+    SKU	      Site-to-site/VNet-to-VNet tunnels	Aggregate throughput benchmark	Border Gateway Protocol (BGP) support
+    Basic*	    Maximum: 10	                      100 Mbps	                      Not supported
+    VpnGw1/Az 	Maximum: 30	                      650 Mbps	                      Supported
+    VpnGw2/Az	  Maximum: 30	                      1 Gbps	                        Supported
+    VpnGw3/Az	  Maximum: 30	                      1.25 Gbps	                      Supported
+
+  Deploy VPN gateways:
+    - Virtual network -  Deploy an Azure virtual network with enough address space for the additional subnet that you'll need for the VPN gateway
+    - GatewaySubnet -  Deploy a subnet called GatewaySubnet for the VPN gateway. 
+    - Public IP address - Create a Basic-SKU dynamic public IP address if using a non-zone-aware gateway.
+    - Local network gateway - Create a local network gateway to define the on-premises network's configuration: where the VPN gateway will connect and what it will connect to.
+    - Virtual network gateway - Create the virtual network gateway to route traffic between the virtual network and the on-premises datacenter or other virtual networks.
+    - Connection -  Create a Connection resource to create a logical connection between the VPN gateway and the local network gateway.
+
+  High Availability scenarios:
+    - Active/Standby 
+    - Active/Active
+
+
+2. Connect your on-premises network to the Microsoft global network by using ExpressRoute
+
+  With ExpressRoute, your data doesn’t travel over the public internet, so it's not exposed to the potential risks associated with internet communications. 
+  ExpressRoute is a private connection from your on-premises infrastructure to your Azure infrastructure. 
+  Even if you have an ExpressRoute connection, DNS queries, certificate revocation list checking, and Azure Content Delivery Network requests are still sent over the public internet.
+
+    - Azure ExpressRoute lets you seamlessly extend your on-premises networks into the Microsoft cloud. 
+    - This connection between your organization and Azure is dedicated and private. 
+    - Establishing an ExpressRoute connection enables you to connect to Microsoft cloud services like Azure, Office 365, and Dynamics 365. 
+    - Security is enhanced, connections are more reliable, latency is minimal, and throughput is greatly increased.
+
+  Features and benefits of express route:
+    - Layer 3 connectivity
+    - Built in redundancy
+    - Dynamic routing [ExpressRoute uses the Border Gateway Protocol (BGP) routing protocol.]
+    - Connectivity to Microsoft Cloud services.
+    - 
+    
+  Express route connectivity models:
+    - CloudExchange co-location: 
+        Ex: if your datacenter is co-located at a cloud exchange such as an internet service provider (ISP), 
+        you can request a virtual cross-connection to the Microsoft cloud.
+    - Point to point
+    - Any to Any
+
+  Prerequisites for ExpressRoute:
+    An ExpressRoute connectivity partner or cloud exchange provider that can set up a connection from your on-premises networks to the Microsoft cloud.
+    An Azure subscription that is registered with your chosen ExpressRoute connectivity partner.
+    An active Microsoft Azure account that can be used to request an ExpressRoute circuit.
+    An active Office 365 subscription, if you want to connect to the Microsoft cloud and access Office 365 services.
+
+  When to use Azure ExpressRoute
+    Consider using the Azure ExpressRoute service in the following scenarios:
+    - Low-latency connectivity -  to services in the cloud. In these situations, eliminating or reducing the network overhead will have a significant impact on the performance of your applications.
+    - Accessing high-volume systems in the cloud that consume or produce massive volumes of data quickly. ExpressRoute can move data around rapidly, with high reliability.
+    - Consuming Microsoft Cloud Services, such as Office 365 and Dynamics 365. 
+      - ExpressRoute is especially useful if your organization has a large number of users who need to access these services concurrently.
+    - Organizations that have migrated large-scale on-premises systems to Azure. 
+        Using ExpressRoute helps ensure that the results of the migrations are seamless for on-premises clients. 
+        They should notice no drop in performance. 
+        They might even experience some improvement if the previous on-premises systems were restricted by network bandwidth.
+    - Situations where data should not traverse the public internet for security reasons.
+    - Large datacenters, with a high number of users and systems accessing SaaS offerings.
+
+  Express route circuit:
+    Logical connection between your on-prem network and azure network is called circuit.
+      - You configure traffic management and routing in ExpressRoute by using circuits.
+      - ExpressRoute circuits also support connections through many connectivity providers.
+
+  Benefits:
+   - Predictable perfornace
+   - Data privacy for your traffic
+   - High throughput, low latency connections
+   - Availability and connectivity
+  
+  Bandwidth
+    50 Mbps
+    100 Mbps
+    200 Mbps
+    500 Mbps
+    1 Gbps
+    10 Gbps
+    100 Gbps
+
+3. Secure and isolate access to Azure resources by using network security groups and service endpoints
+  NetworkSecurityGroups:
+    - Network security groups filter network traffic to and from Azure resources.
+    - Network security groups contain security rules that you configure to allow or deny inbound and outbound traffic.
+    - You can use network security groups to filter traffic between VMs or subnets, both within a virtual network and from the internet.
+  
+  Augmented security rules
+    - Multiple IP address
+    - Multiple ports
+    - Service tags
+    - App security groups
+  
+  Service tags:
+    - VirtualNetwork
+    - AzureLoadBalancer
+    - AzureTrafficManager
+    - Internet
+    - Storage
+    - SQL
+    - AppService
+  
+  App security groups:
+    - App security groups let you configure network security for resources used by specific apps. 
+    - You can group VMs logically, no matter what their IP address or subnet assignment.
+
+  Virtualnetwork service end points:
+    - Service endpoints let you secure your Azure resources to only your virtual network. 
+    - Service traffic will remain on the Azure backbone, and doesn't go out to the internet.
+    - Adding service endpoints doesn't remove the public endpoint. It simply provides a redirection of traffic.
+  
+4.Azure Traffic manager
+  Routing methods:
+    1. Weighted routing:
+        Choose weighted when you want to distribute traffic across a set of endpoints, either evenly, or based on different weights.
+    2. Performance routing:
+        If you have endpoints in different geographic locations, you can use performance routing to send users to the endpoint that has the best performance for the user. 
+        To choose the best endpoint to use, this routing method uses an internet latency table, which actively tracks network latencies to the endpoints from locations around the globe. 
+        When a user makes a request, Traffic Manager returns the best performing endpoint based on the location of the request.
+    3. Geographic routing
+        With the geographic routing method, users are directed to specific endpoints based on where their DNS query originates.
+    4. Multivalue routing
+    5. Subnet routing
+    6. Priority routing
+        The Traffic Manager profile contains a prioritized list of service endpoints. 
+        By default, Traffic Manager sends all traffic to the primary (highest-priority) endpoint. 
+        If the primary endpoint isn't available, Traffic Manager routes the traffic to the second endpoint.
+    
+    Summary:
+      1. Improve performance by serving requests from the closest deployment.
+      2. Direct traffic to specific endpoints through priority routing.
+      3. Improve application resilience by detecting failures and routing customers to available endpoints.
+      4. Perform maintenance or updates without any downtime.
+      5. Serve requests from specific geographic locations from specific deployment.
+
+5. Design a hybrid network architecture on Azure
+    Connect azure virtual networks
+      1. Azure VPN gateway
+          1. Site-to-site
+          2. Multisite
+          3. Point-to-site
+          4. Network-to-Network
+      2. Expressroute
+    
+
+
+
