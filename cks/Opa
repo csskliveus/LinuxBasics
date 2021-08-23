@@ -1,0 +1,57 @@
+https://open-policy-agent.github.io/gatekeeper/website/docs/howto
+Gatekeeper uses the OPA Constraint Framework to describe and enforce policy. 
+Look there for more detailed information on their semantics and advanced usage.
+
+ContraintTemplate:
+  Before you can define a contraint, you must first define a 'contraint template'.
+  Contraint template defines 2 things:
+   - 'Rego' that enforces the constraint. 
+   - Schema of the constraint.
+    --------------------------------------------------------------------------------
+      apiVersion: templates.gatekeeper.sh/v1beta1
+      kind: ConstraintTemplate
+      metadata:
+        name: k8srequiredlabels
+      spec:
+        crd:
+          spec:
+            names:
+              kind: K8sRequiredLabels
+            validation:
+              # Schema for the `parameters` field
+              openAPIV3Schema:
+                properties:
+                  labels:
+                    type: array
+                    items: string
+        targets:
+          - target: admission.k8s.gatekeeper.sh
+            rego: |
+              package k8srequiredlabels
+
+              violation[{"msg": msg, "details": {"missing_labels": missing}}] {
+                provided := {label | input.review.object.metadata.labels[label]}
+                required := {label | label := input.parameters.labels[_]}
+                missing := required - provided
+                count(missing) > 0
+                msg := sprintf("you must provide labels: %v", [missing])
+              }
+    --------------------------------------------------------------------------------
+Constraints:
+  Constraints are then used to inform Gatekeeper that the admin wants a ConstraintTemplate to be enforced, and how.
+
+    --------------Constraint example:-------------------------
+    apiVersion: constraints.gatekeeper.sh/v1beta1
+    kind: K8sRequiredLabels
+    metadata:
+      name: ns-must-have-gk
+    spec:
+      match:
+        kinds:
+          - apiGroups: [""]
+            kinds: ["Namespace"]
+      parameters:
+        labels: ["gatekeeper"]
+    ------------------------------------------------------------
+    Above example constraint uses the K8sRequiredLabels constraint template above to make sure the 
+    gatekeeper label is defined on all namespaces:

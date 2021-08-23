@@ -5,7 +5,7 @@ Embracing Risk:
     - its assessment, 
     - management 
     - and the use of error budgets 
-    to provide usefully neutral approaches in service management.
+    to provide usefully nuetral approaches in service management.
 
 Service level objectives: [SLO]
   This is another foundational conceptual unit of SRE. 
@@ -35,14 +35,14 @@ when we set an availability target of 99.99%,we want to exceed it, but not by mu
   clean up technical debt, 
   or reduce its operational costs.
 
-As standard practive at google, we are often best served by identifying an objective metric
+As standard practice at google, we are often best served by identifying an objective metric
   to represent the property of the system we want to optimize.
   By setting a target, we can assess our current performance and track
   improvements or degradations over time. 
 
 How to engineer greater reliability into google systems and identify appropriate level of tolerance for the services to run.
 
-We strive to make a servie reliable enough, but no more reliable than it needs to be.
+We strive to make a service reliable enough, but no more reliable than it needs to be.
 
   availability = uptime/(uptime+downtime)
 
@@ -54,7 +54,7 @@ Risk Tolerance:
  - 
 
 Indentifying the risk tolerance of consumer service: 
-  There are many factors to consider when assessing the risk tolerance of services
+  There are many factors to consider when assessing the risk tolerance of services.
 
   - What level of availability is required ? 
   - Do different types of failures have different effects on the serice ? 

@@ -1,0 +1,57 @@
+https://www.wisdomjobs.com/e-university/linux-interview-questions.html
+1. What does Nslookup do ? explain in 2 modes
+    Nslookup is used to find details about name server. Details like IP address of a machine, MX records etc.
+2. Bash shell
+    Bash is a free shell for UNIX. It is the default shell for most UNIX systems.
+3. What are the process states in Linux ?
+    1. Running
+    2. Interruptible - Blocked state, waiting for signal or event from another process.
+    3. Uninterruptible - Blocked state, process waits for hardware condition and cannot handle any signal.
+    4. Stopped
+    5. Zombie - process terminated, but information is still there in process table.
+                Zombie is a process state where child dies before parent process. Zombie state can be finished
+                  when parent process dies.
+
+4. Explain system calls used for process management in linux.
+  1. Fork() - used to create process
+  2. Exec() - execute a new program
+  3. Wait() - wait until process finishes
+  4. Exit()
+  5. Getpid
+
+5. List files in a directory
+  ls -l, ls -a
+
+6. kill process
+    kill <pid> 
+
+7. Edit contents of a file
+   vi <file>
+
+8. What utility would you use to cut off the first column in A text file ? 
+    awk, kde
+    
+9. What Types Of Files You Know?
+    Answer :
+
+    Files come in eight flavors:
+    Normal files
+    Directories
+    Hard links
+    Symbolic links
+    Sockets
+    Named pipes
+    Character devices
+    Block devices
+10.  What command to use see Process list in Hierarchical Structure along with PID?
+  A. #pstree -p.
+
+11. Tell me Linux Boot Sequence Flow?
+  A. BIOS → MBR → Boot Loader /GRUB→ Kernal → Runlevel.
+
+12. What is LDAP? http://www.harisystems.com/tutorial/linuxqa/linuxqa_series4.php 
+  A. The Lightweight Directory Access Protocol (LDAP) is a set of open protocols 
+        used to access centrally stored information over a network.
+        http://www.harisystems.com/tutorial/linuxqa/linuxqa_series8.php
+
+13. 

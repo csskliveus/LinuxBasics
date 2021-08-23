@@ -1,0 +1,30 @@
+Microsoft System Center Configuration Manager
+
+1. Minimises manual tasks
+2. Maximize software investments
+3. Compliance management
+4. Asset management
+
+
+SCCM deployment:
+1. Can be deployed in single server.
+2. Can be deployed in more than 1 server.
+3. Can be deployed in hierarchy.
+
+CAS: Central administrative site 
+     Child administrative site
+     Standalone administrative site
+
+  CAS : 
+    1. Used for large scale deployments
+    2. Manages other sites
+    3. Devices are managed seperatly
+    4. I CAS can manage 1 million sites.
+
+  Standalone primary site:
+    1. Small scale deployments
+    2. Manages devices directly
+
+Roles available
+  Ex: 1. Distribution point
+

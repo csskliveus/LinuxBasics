@@ -1,0 +1,37 @@
+  1 - hosts: qa
+  3   become: true
+  4   tasks:
+  5     - name: install dependency
+  6         apt:
+  7           name: "{{item}}"
+  8           state: present
+  9           update_cache: yes
+ 10         loop:
+ 11           - apt-transport-https
+ 12           - ca-certificates
+ 13           - curl
+ 14           - gnupg-agent
+ 15           - software-properties-common
+ 16     - name: add GPG key
+ 17         apt_key:
+ 18           url: https://download.docker.com/linux/ubuntu/gpg
+ 19           state: present
+ 20     - name: add docker repository to apt
+ 21         apt_repository:
+ 22           repo: deb https://download.docker.com/linux/ubuntu bionic stable
+ 23           state: present
+ 24     - name: install docker
+ 25         apt:
+ 26           name: "{{item}}"
+ 27           state: latest
+ 28           update_cache: yes
+ 29         loop:
+ 30           - docker-ce
+ 31           - docker-ce-cli
+ 32           - containerd.io
+ 33     - name: assicurati che docker sia attivo
+ 34       service:
+ 35         name: docker
+ 36         state: started
+ 37         enabled: yes
+~                               

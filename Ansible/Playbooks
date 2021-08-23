@@ -1,8 +1,12 @@
+https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+
 Ansible Playbooks offer a 
  repeatable, 
  re-usable, 
  simple configuration management 
  and multi-machine deployment system, one that is well suited to deploying complex applications. 
+
+ At a basic level, playbooks can be used to manage configurations of and deployments to remote machines.
 
   The playbooks in the ansible-examples repository illustrate many useful techniques
   https://github.com/ansible/ansible-examples
@@ -64,3 +68,6 @@ Ansible Playbooks offer a
           state: started
   '''
   <--------------------------------------------------------------------------------------------->
+
+  - The playbook above sets a remote_user for each play. This is the user account for the SSH connection.
+

@@ -1,0 +1,14 @@
+https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html#managing-files
+
+An Ansible ad hoc command uses the /usr/bin/ansible command-line tool to automate a single task on one or more managed nodes.
+
+ad hoc commands are great for tasks you repeat "rarely."
+
+Use cases for adhoc commands:
+  - Rebooting servers
+  - Managing files
+  - Managing packages
+  - Managing users and groups
+  - Managing services
+  - Gathering facts
+

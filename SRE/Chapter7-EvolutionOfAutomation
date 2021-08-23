@@ -1,3 +1,8 @@
+- Doing automation thoughtlessly can create as many problems as it solves.
+- Always try to work towards creating a platform.
+
+
+
 What exactly is the value of automation ? 
  1. Consistency
  2. A Platform
@@ -6,7 +11,7 @@ What exactly is the value of automation ?
  5. Time saving
 
 
-
+  1. Consistency:
   2. A Platform: 
     - Designed and done properly, automatic systems also provide a platform that can be extended, 
       applied to more systems, or perhaps even spun out for profit.
@@ -20,3 +25,17 @@ What exactly is the value of automation ?
         given that the system is sufficiently large.
   4. Faster Action
     - 
+
+
+Value for Google SRE:
+  - The factors of consistency, quickness, and reliability dominate most conversations about the trade-offs of performing automation.
+  - Google is ideologically bent upon using machines to manage machines where possible, reality requires some modification of our approach
+  - we have chosen to create platforms where we could, or to position ourselves so that we could create platforms over time. 
+  - We view this platform-based approach as necessary for manageability and scalability.
+
+The use cases for Automation:
+
+  - Automation: Software to act on another software. 
+  - Google Automation: The context for our automation is often automation to manage the lifecycle of systems, not their data.
+
+

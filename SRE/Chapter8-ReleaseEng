@@ -1,0 +1,72 @@
+The release engineer needs to understand the intention of how the code should be built and deployed. 
+Release engineering is a relatively new and fast-growing discipline of software 
+  engineering that can be concisely described as building and delivering software.
+
+Release engineers have a solid (if not expert) 
+  - understanding of source code management, 
+  - compilers, 
+  - build configuration languages,
+  - automated build tools,
+  - package managers, and installers. 
+
+Their skill set includes deep knowledge of multiple domains: 
+  - development, 
+  - configuration management, 
+  - test integration, 
+  - system administration, and customer support.
+
+Running reliable services requires reliable release processes.
+
+Release engineers work with software engineers (SWEs) in product development and 
+  SREs to define all the steps required to release software—from how the software 
+  is stored in the source code repository, to build rules for compilation, 
+  to how testing, packaging, and deployment are conducted.
+
+Role of release engineer:
+
+  Release engineers define best practices for using our tools in 
+    order to make sure projects are released using consistent and repeatable methodologies.
+  Release engineers and SREs work together to develop strategies for canarying changes, 
+    pushing out new releases without interrupting services, and rolling back features that demonstrate problems.
+
+Enforcement of policies and procedures:
+
+  Several layers of security and access control determine who can 
+    perform specific operations when releasing a project. 
+  
+  Gated operations include:
+    - Approving source code changes—this operation is managed through configuration files scattered throughout the codebase
+    - Specifying the actions to be performed during the release process.
+    - Creating a new release.
+    - Deploying a new release.
+    - Making changes to project build configuration
+
+  Our automated release system produces a report of all changes contained in a release, which is archived with other build artifacts.
+
+  Branching:
+    - Most major projects dont release directly from mainline. 
+    - Instead, we branch from the mainline at a specific revision and never merge changes from the branch back into the mainline.
+    - Bug fixes are submitted to the mainline and then cherry picked into the branch for inclusion in the release.
+    - This practice avoids inadvertently picking up unrelated changes submitted to the mainline since the original build occurred.
+  
+  Testing:
+    - This practice avoids inadvertently picking up unrelated changes submitted to the mainline since the original build occurred.
+  
+  Packaging: 
+    - Labels are applied to each package.
+  
+  A typical release process proceeds as follows:
+
+    1. Rapid uses the requested integration revision number (often obtained automatically from our continuous test system) 
+      to create a release branch.
+    2. Rapid uses Blaze to compile all the binaries and execute the unit tests, 
+      often performing these two steps in parallel. 
+    3. Compilation and testing occur in environments dedicated to those specific tasks, as opposed to taking place in the Borg job where the Rapid workflow is executing. This separation allows us to parallelize work easily.
+    4. Build artifacts are then available for system testing and canary deployments. 
+    5. A typical canary deployment involves starting a few jobs in our production environment after the completion of system tests.
+    6. The results of each step of the process are logged. A report of all changes since the last release is created.
+
+
+
+
+

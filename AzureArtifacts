@@ -1,0 +1,32 @@
+Azure Artifacts:
+
+Feed: 
+ Feed is an organizational construct to store, manage and group your packages and control who to share it with.
+
+Project-scoped and organization-scoped feeds
+  Only project scoped feeds can be made public
+
+Public feeds:
+  Public feeds are used to share your packages publicly with anyone on the internet. 
+  Public feeds:
+    - Can only be created inside of public projects.
+    - Public feeds cannot have upstream sources.
+    - Public users cannot currently download universal packages. All other package types are supported for public access.
+
+Create a feed:
+  2 types of feeds:
+    1. Project-scoped
+    2. Organization scoped
+
+Difference between project scoped and organization scoped feeds:
+  1. Visibility:
+      1. If project is public, feed also public.
+      2. If project is private, feed also private. 
+      3. Org feeds will always remain private.
+
+Migrage packages to azure artifacts feed:
+  1. Using the "AzureArtifactsPackageMigration" powershell module, you can easily migrate your NuGet packages from MyGet.
+
+
+Create NuGet package:
+  1. 

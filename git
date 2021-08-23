@@ -1,0 +1,51 @@
+https://www.interviewbit.com/git-interview-questions/
+1. git merge preserves the ancestory of commits
+
+2. git rebase, on the other hand, 
+  re-writes the changes of one branch onto another branch without the creation of a merge commit:
+  rebase - replays your commits on top of the new base.
+
+3. Choosing the right method:
+  - feature based workflow , git merge is the right choice.
+        - preserving commit history.
+        - Avoids unnecessary git reverts or resets. 
+
+4. linear history
+  - git rebase is the best option. 
+  - avoid unnecessary commits
+
+5. Dangers of rebasing
+    - re-writing the commit history.
+      - if some one else checks out your branch before we rebase ours then 
+        it would really har to figure out what the history of each branch is.
+
+6. Some of the key points to keep in mind are:
+    - rebase only your own local branches.
+    - Don’t rebase public branches.
+    - Undo rebase with git reflog.
+    - reverting a rebase is much more difficult than reverting a merge if there are many conflicts.
+
+7. git clone:
+    - Creates of copy of existing git repo.
+
+8. Can you explain 'head' in terms of git and also tell the number of heads that can be present in a repository?
+
+    - A head is nothing but a reference to the last commit object of a branch.
+    - For every repository, there will always be a default head referred to as “master” or now “main” (as per GitHub) but there is no restriction to the count of heads available. 
+      In other words, it can have any number of heads. 
+
+9. What does git status command do?
+  - Git status command is used for showing the difference 
+      between the working directory and the index which is helpful for 
+      understanding git in-depth and also keep track of the tracked and non-tracked changes.
+
+10. git stash
+  - Git stash can be used in cases where we need to 
+      switch in between branches and at the same time not wanting to lose edits in the current branch.
+  - Running the git stash command basically pushes the current working directory state and index to the stack for future use 
+      and thereby providing a clean working directory for other tasks.
+  - git stash apply
+      will bring back all changes saved in stash.
+
+11. Difference between git pull and git fetch
+  - git pull = git fetch + git merge

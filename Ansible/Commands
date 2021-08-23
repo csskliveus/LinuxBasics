@@ -10,6 +10,13 @@ Ansible commands
 
 # ansible groups
   ansible db:web_server -m ping [groups]
+  Groups example:
+    [group1]
+      10.79.4.4
+    [group2]
+      10.79.4.5
+    [group3]
+      10.79.4.6
 
 # Adhoc commands with ansible groups
   command format
