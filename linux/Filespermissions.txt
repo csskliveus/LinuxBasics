@@ -6,8 +6,8 @@ rw-     is ownergroup read,write and no execute permissions
 rw-     for others read,write and no execute permissions
 
 Read+Write+Execute 7
-Read+Write 7
-Read+Execute 6
+Read+Write 6
+Read+Execute 5
 Read 4
 Write+Execute 3
 Write 2

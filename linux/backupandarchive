@@ -1,0 +1,10 @@
+# Create a tar file
+
+sudo tar cvf filename.tar /path/to/source 
+
+sudo tar cvfz filename.tar /path/to/source  # gzip file
+
+
+# extract tar files
+
+tar xvfz filename.tar.gz --directory=torestorefolder/

@@ -1,0 +1,69 @@
+https://esc.sh/blog/inode-hardlink-softlink-explained/
+
+
+inode is a datastructure that represents a file or folder. An inode number is a unique number given to an inode.
+
+  What exactly is an Inode and Inode number?
+  Inode is a data-structure that represents a file or a directory. An Inode number is a unique number given to an inode. In plain English, this is what it means.
+
+  Everything in a unix system is represented as a file ( including regular files like your movies, documents, audio files )
+  A file is stored in a file system ( ext3, ext4 etc ).
+  But when you store a file in a file system, you need to have some kind of identification mechanism so that you can retrieve the file later, modify it, or even delete it. If there is no unique identification mechanism, you have a filesystem full of random garbage data that you have no way of identifying or using.
+  So, we need a way to identify each file in a file system. We use inode number for that.
+  Inode number of a file points to the inode corresponding to that file. And each inode represents a file.
+  When I say “represent”, I mean, each inode contains a lot of information about the file [ size of the file, owner, group, permissions and all kinds of stuff like that ]
+  There is a limit to the maximum number of inodes in a file system. So, it is possible that you can’t store any more files even if you have plenty of storage left ( That’s right, you have GBs of storage space left, but you have a huuuuge number of files in your disk that you have used up all the inodes and you cannot store any more data. )
+  Okay, that’s enough with the theory. Let’s see some practical stuff to easily understand the inodes and inode number.
+
+  $ touch file
+  We use the following command to see the inode number
+
+  $ ls -i file 
+  797380 file
+  Let’s try that with a directory
+
+  $ mkdir dir1
+  $ ls -id dir1
+  797359 dir1
+  ’d' switch is used to display the description of the directory rather than the contents of the directory Now let’s try and change the contents of the file and see if the inode number is changing
+
+  $ echo "hello there" > file 
+  $ ls -i file 
+  797380 file
+  Nope, the inode number did not change how about if we copy the file?
+
+  $ cp file file1
+  $ ls -il
+  total 28
+  797359 drwxr-xr-x 2 mansoor mansoor 4096 Mar 20 13:38 dir1
+  797380 -rw-r--r-- 1 mansoor mansoor   12 Mar 20 13:40 file
+  797385 -rw-r--r-- 1 mansoor mansoor   12 Mar 20 13:40 file1
+  Of course the inode number for the copied file is different. How about moving the file?
+
+  $ mv file file2
+  $ ls -i file2 
+  797380 file2
+  See, the inode number did not change, just the file name changed. So, now you know what the inode and inode number stands for. Let’s get back to “hard link and soft link” part
+
+What exactly is a soft link ? 
+
+  A soft link is also known as a symbolic link or a symlink. As the name suggests, it’s a symbolic link to another file. But come one that’s not a good definition.
+
+  A symbolic link is a file ( yes, that’s right, it’s another file ) which contains information about the location of a target file or directory.
+
+  Let’s go through the following bullets to easily understand a Symlink.
+
+  A symlink is a file that points to another file or directory.
+
+  A symlink is independent of the target.
+
+  If you delete a symlink, the target is unaffected.
+
+  If you delete the file, the symlink is still there, but it won’t work because the target now does not exist ( obviously ).
+
+Hardlink:
+  Hard link is not a link to the original “file”, instead it points to the original inode of the “file”, which makes it almost similar to the orignal “file” except in the name
+
+
+
+

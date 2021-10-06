@@ -1,8 +1,12 @@
 https://www.bitarray.io/python-interview-questions/
 ----------------------------------------------------------------------------
 Question 2: Is python use compiler or an interpreter to compile the code?
-  Answer: Python use Interpreter which compiles the code line by line and then after successfully compile of whole code it then converts the code into the machine executable code.
+  Answer: Python is a high level interpreter language which compiles the code line by line and then after successfully compile of whole code it then converts the code into the machine executable code.
 ----------------------------------------------------------------------------
+question x: what is an interpreted language ? 
+  Answer: An interpreted language is any programming language which executes its statements line by line. 
+          No need to compile python like c.
+
 Question 3: What are Lists and Tuples in python?
 
   Answer: 
@@ -11,7 +15,7 @@ Question 3: What are Lists and Tuples in python?
   List and tuple both are the datatypes in Python which is used to store information. They are used to store any type of data.
 
   SR.NO.	LIST	TUPLE
-  1	Lists are mutable. Tuples are immutable.
+  1	Lists are mutable. 1. Tuples are immutable.
   2	List Implication of iterations is Time-consuming. Tuple,	The implication of iterations is comparatively Faster
   3	The list is better for performing operations, such as insertion and deletion.	Tuple data type is appropriate for accessing the elements
   4	Lists consume more memory.	Tuple consume less memory as compared to the list
@@ -47,8 +51,12 @@ Question 6: what is *args and **kwargs in python ?
         fun(key1 ='value1', key2 ='value2', key3='value3')
 
 Question 9: What is a pickle and unpickle in Python?
-  - Pickle is used to serialize an object in python and dump into a file. 
-  - Retrieving data from that file is known as unpickling.
+  - Pickling
+    - process used to serialize object in python.
+    - process used to serialize an object in python and dump into a file. 
+  - unpickling
+    - deserialize the byte stream to recreate the objects stored in the file.
+    - Retrieving data from that file is known as unpickling.
 
 Question 10: What is map function in python? 
   - Map function is used to iterate on a function and its arguments should be iterable.
@@ -81,4 +89,46 @@ Question 14: Why python use GIL? Or what problem it solves in python?
   Every Object created in python has a reference count variable which keeps tracking the no of references that point to that object. 
   This count variable is used by Garbage collector to manage memory if that count is zero means this variable not in use and memory is released from this object.
 
+https://intellipaat.com/blog/interview-question/python-interview-questions/
 
+Q15: What is PEP ?
+  Python enhancement praposal. 
+  It is a set of rules that specify how to write and design Python code for maximum readability.
+
+Q16: How is memory managed in python? 
+  1. Memory in python is managed by private heap space.
+  2. All python objects and data structures are assigned to private heap space.
+  3. Private heap space is made available to Python garage collectors, which recycles and reuses private heap space.
+
+Q17: PYTHONPATH
+  1. PYTHONPATH has a role similar to PATH. 
+  2. This variable tells Python Interpreter where to locate the module files imported into a program
+
+Q18: Namespaces in python
+  1. Global
+  2. Local
+  3. Built in 
+
+Q19: What is __init__ in python ? 
+  1. __init__ is a reserved method in Python classes.
+  2. It is like a constructor.
+  3. Allocates memory as soon as object is created. 
+  4. Can be used to initialize variables.
+
+Q20: What are iterators in python ? 
+  1. Iterator is an object. 
+  2. __iter__() method initializes an iterator.
+  3. __next__() method returns the next item in iteration and points to next element
+
+Python libraries interview questions
+Q21: Differentiate between a package and a module in python
+  Module: 
+    - Module is a single python file. 
+    - Module can import other modules
+  Package:
+    - Package is a folder/directory where different sub-packages and modules reside.
+    - Package will be created as follows:
+      - Create a directory and give a valid name.
+      - Place modules of one kind in this directory.
+      - Create __init__.py file in this directory.This will tell python that this is a directory.
+Q22: 

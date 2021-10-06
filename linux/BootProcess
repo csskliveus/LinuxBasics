@@ -11,7 +11,8 @@ BIOS POST:
       If any devices are not responding , you wil hear a beep sound.
   3. If POST fails , boot process will stop.
   4. BIOS issues, 'interrupt INT 13H' which locates 'boot sector' on each attached bootable device.
-  5. 'Boot sector' that containes valid 'boot record' is loaded into RAM and control is transferred to the code that was loaded from boot sector.
+  5. 'Boot sector' that containes valid 'boot record' is loaded into RAM and control is transferred to the 
+      code that was loaded from boot sector.
   
 The boot sector is really the first stage of the boot loader. There are 3 boot loaders used by most linux distributions. 
 

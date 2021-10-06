@@ -28,3 +28,22 @@ grep -c 'word' /path/to/file
 # -l	Print only names of FILEs with selected lines
 # -c	Print only a count of selected lines per FILE
 # --color	Display matched pattern in colors
+
+# Regex
+# ^ The start of a string or line.  grep '^The' <filename>
+# $ The end of the string. 
+# . wild card search can match any character. 
+# | matches a specific characters or group of characters on either side. 
+# \ Used to escape special character
+# t the character t
+# az the string "az"
+
+grep -i '^u' /etc/passwd # search for lines which starts with 'u'. 
+
+grep 'h$' /etc/passwd  # search for lines which ends with 'h'.
+
+grep '^T[a-z][^e]' # line starts with T and doesnot ends with E.
+
+# AWK
+  # An AWK program is made up of patterns and actions to be performed when a pattern match is found. 
+  # It scans input lines sequentially and examines each one to determine whether it contains a pattern matching one specified by user.

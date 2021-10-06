@@ -8,7 +8,7 @@
       "name": "Python: Current File",
       "type": "python",
       "request": "launch",
-      "program": "C:\\WorkingDirectory\\vca\\voyager\\Code\\LinuxBasics\\Python\\learningpython.py",
+      "program": "C:\\WorkingDirectory\\vca\\voyager\\Code\\LinuxBasics\\Python\\examples.py",
       "console": "integratedTerminal"
     }
   ]

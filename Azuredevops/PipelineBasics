@@ -1,0 +1,35 @@
+https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/key-pipelines-concepts?view=azure-devops
+
+
+1. Trigger - Trigger tells pipeline when to run.
+2. Pipeline - Pipeline is made up of one more stages.
+3. Stage - Stage is a way of organizing jobs in pipeline.
+4. Job - Jobs runs on agent. Job can also be agent less.
+5. Agent - Agent runs a job that contains one or more steps.
+6. Artifact - Collection of files or packages published by a run.
+7. task - pre-packaged script. 
+
+
+Repositories:
+
+1. YAML pipeline : The repository in which YAML file is present is called 'self' repository. 
+
+2. CI Triggers: CI trigger causes a pipeline to run whenever you push an update to specified branches.
+    1. Branches: Triggers can be controlled branch wise. 
+    2. Batching CI runs: When there are multiple teams working on the repo, all the changes can be grouped and triggered.
+        trigger:
+          batch: true
+    3. Paths: We can specify path of the folder to trigger requests.
+    4. Opt out of CI: trigger: none , will not trigger any requests. 
+3. Skipping CI:
+    1. [skip ci] or [ci skip]
+4. Trigger Type:
+  1. system variable "Build.Reason" will give trigger type. We can control steps or jobs based on trigger type. 
+  2. PR triggers:
+      1. PR trigger causes pipeline to run whenever a pull request is opened with one of the specified target branches.
+5. Checkoutpath:
+    - If you are checking out a single repo, source code will be checked out into a directory called 's'. 
+        - path is "C:\agent\_work\1\s"
+    - If you specify a path for checkout then checkout path will be
+        - ex: path is 'newrepo' , then checkout path will be "C:\agent\_work\1\newrepo"
+   

@@ -1,0 +1,14 @@
+1. Sonar quebe issue - where sonar quebe ran out of space with number of builds
+    - Need to increase space in SQL to accomidate all pipeline runs. 
+    - Reduce retention period
+    profiles
+  gates
+
+2. Linux machines are case sensitive - swagger file was not generating. So need to work with dev on trouble shooting.
+
+3. Test cases based on PR
+
+4. Build agents with VMSS
+    - 
+    - 
+

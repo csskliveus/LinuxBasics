@@ -1,4 +1,11 @@
 Azure Artifacts:
+  1. Azure artifacts enables developers to publish and consume different types of packages to artifact feeds.
+  2. You can use azure artifacts in conjunction with azure pipelines to deploy packages.
+
+Supported artifacts types:
+  1. Build
+  2. Maven
+  3. Nuget
 
 Feed: 
  Feed is an organizational construct to store, manage and group your packages and control who to share it with.
