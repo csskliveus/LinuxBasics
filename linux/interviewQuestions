@@ -11,6 +11,7 @@ https://www.wisdomjobs.com/e-university/linux-interview-questions.html
     5. Zombie - process terminated, but information is still there in process table.
                 Zombie is a process state where child dies before parent process. Zombie state can be finished
                   when parent process dies.
+    6. Terminated/Completed
 
 4. Explain system calls used for process management in linux.
   1. Fork() - used to create process

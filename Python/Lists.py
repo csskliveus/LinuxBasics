@@ -1,3 +1,8 @@
+# List is a built-in data structure in Python. 
+# It is represented as a collection of data points in square brackets. 
+# Lists can be used to store any data type or a mixture of different data types. 
+# Lists are mutable which is one of the reasons why they are so commonly used.
+
 None # can be used to assign value as None
 
 mylist=['one','two','three']
@@ -56,4 +61,9 @@ b = [7,8,9]
 
 my_list = [[10,12,20],[11,12,13],[15,16,17]]
 flattened = [x for temp in my_list for x in temp ]
+
+
+import os
+
+os.__path__()
 

@@ -1,0 +1,9 @@
+Regex basics
+
+^ - Start of the string or the line. 
+$ - End of the string or the line. 
+. - wild card which can match any character.
+| - Matches a specific character or a group of characters on either side. 
+\ - Used to escape a special character.
+t - The character t
+az - 

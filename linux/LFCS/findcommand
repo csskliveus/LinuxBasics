@@ -1,0 +1,47 @@
+https://www.tecmint.com/35-practical-examples-of-linux-find-command/
+
+
+-- Type is a bash built-in that searches environment for executable commands
+
+   type <commandyouwanttosearch> 
+   type kubectl
+   type docker
+   type which
+
+-- Which: Search the files in $PATH and provides output
+   which which
+
+-- type -a which
+
+-- whereis herokue
+
+##################################################################
+Less command https://linuxize.com/post/less-command-in-linux/
+If you want less to shows line numbers launch the program with the -N option:
+
+   less -N filename
+
+By default, when less exits, the file contents will be cleared from the screen. To leave file contents on screen, use the -X option:
+
+   less -X filename
+
+The +F option tells less to watch the file contents for changes. This is useful when opening log files.
+   less +F /var/log/messages
+
+When launched with +F, less will behave pretty much the same as tail -f s
+
+##################################################################
+comm 
+diff
+com 
+
+##################################################################
+stdin(0)
+stdout(1)
+stderr(2)
+
+##################################################################
+
+grep '^The' mynotes.txt
+grep '^T[a-z][^s]' mynotes.txt [Line starts with 'T' and ends with 's']
+grep 

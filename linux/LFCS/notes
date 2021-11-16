@@ -1,0 +1,39 @@
+Essential Commands — 25%
+Operation of Running Systems — 20%
+User and Group Management — 10%
+Networking — 12%
+Service Configuration — 20%
+Storage Management — 13%
+
+
+I have compiled a list of topics that you should brush up on:
+
+- Set file attributes
+
+- Extended ACLs
+
+- Virsh - the linux training material literally doesn’t even attempt to explain it. They just redirect you to their homepage.
+
+- Raid configuration – know how to add a spare and update the initramfs. (there is so much conflicting open source info online)
+
+- Hard and soft links
+
+- Fixing unclean filesystems.
+
+- Simple docker image and container administration
+
+- Visudo
+
+- Limits.conf
+
+- Netplan and DNS configuration
+
+- Kill a process with different signals
+
+- Edquota
+
+- Crontab
+
+- Processes on startup
+
+- inodes

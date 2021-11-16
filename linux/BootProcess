@@ -13,7 +13,7 @@ BIOS POST:
   4. BIOS issues, 'interrupt INT 13H' which locates 'boot sector' on each attached bootable device.
   5. 'Boot sector' that containes valid 'boot record' is loaded into RAM and control is transferred to the 
       code that was loaded from boot sector.
-  
+  6. BIOS searches, load and executes boot loader program, which can be found in MBR (Master boot record).
 The boot sector is really the first stage of the boot loader. There are 3 boot loaders used by most linux distributions. 
 
   1.GRUB
@@ -53,6 +53,10 @@ GRUB2 [GRand Unified Bootloader], version 2:
     5. Kernel and its associated files are located in /boot directory. 
     6. The kernel files are identifiable as they are all named starting with vmlinuz.
     7. You can list the contents of the /boot directory to see the currently installed kernels on your system.
+  
+   GRUB2 menu allows you to do couple of things
+     1. It allows you to select Linux kernel version that you want to use. 
+     2. It gives you that ability to edit some kernel parameters by pressing a combination of keyboard keys. 
 
   Kernel:
     1. All of the kernels are in a self-extracting, compressed format to save space. 
@@ -71,7 +75,7 @@ GRUB2 [GRand Unified Bootloader], version 2:
 
 
  
-
+https://opensource.com/article/17/2/linux-boot-and-startup
 
 
 

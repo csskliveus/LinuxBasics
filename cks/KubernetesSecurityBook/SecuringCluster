@@ -1,0 +1,130 @@
+# https://kubernetes-security.info/
+
+
+Securing a Cluster
+
+https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/ 
+
+1. Controlling access to cluster
+
+  1. Kubernetes is entirely API driven, controlling and limiting 
+        who can acces the cluster ? 
+        what actions they are allowed to perform? 
+        
+    is the first line of defence ?   
+
+  2. API Authentication
+    - Choose an authentication mechanism for the API server to use that matches the common access patterns.
+    - All API clients must be authenticated, even the infrastructure like nodes,proxies,scheduler and volume plugins, needs to be authenticated. 
+    - Integrate existing OIDC or LDAP.
+
+  3. API Authorization
+    - It is recommended to use Node,RBAC and NodeRestriction admission plugins.
+    - Kubernetes ships with integrated RBAC components that matches an incoming user or group to set of permission bundled into roles.
+    - These permissions combine verbs (get, create, delete) with resources (pods, services, nodes) and can be namespace-scoped or cluster-scoped.
+    
+    - As more and more users interact, it is necessary to separate teams into separate namespaces with more limited roles. 
+    - The out-of-the box roles represent a balance between flexibility and common use cases, but more limited roles should be carefully     reviewed to prevent accidental escalation.
+    - 
+    - ClusterlevelRoles, NamespaceLevelRoles
+    - Understanding out-of-box roles in the cluster. 
+    - Understanding verbs and dependencies between k8s resource is very important.
+
+2. Controlling access to kubelet
+    - By default kubelet allows un-authenticated access to this API.
+    - By default, requests to the kubelet's HTTPS endpoint that are not rejected by other configured authentication methods are treated     as anonymous requests, and given a 
+        - username of system:anonymous 
+        - group of system:unauthenticated.
+
+3. Controlling capabilities of workload or user at runtime. 
+    - Limiting resource usage on a cluster. 
+    - Controlling what privileges containers run with. 
+    - Preventing containers from loading unwanted kernel modules. 
+    - Restricting network access. 
+    - Restricting cloud metadata API.
+    - Controlling which pods, nodes can access. 
+
+    1. Limiting resource usage on a cluster
+        ResourceQuota: Limits the number or capacity of resources granted to a namespace. 
+                       limits - CPU, memory or persistent disk
+        Limit Ranges: Prevents users from requesting unreasonable high or low of commonly reserved resources like memory, cpu. 
+
+    2. Controlling what privileges containers run with
+        - SecurityContext
+        - PodSecurityPolicies
+        - Write application to run as nonroot user. 
+
+    3. Preventing containers from loading unwanted kernel modules. 
+        - To prevent containers from loading unwanted kernel modules, we can add an entry or create a file such as
+            "/etc/modprobe.d/kubernetes-blacklist.conf" 
+        - To prevent loading modules more generically, we can use "SELinux [Linux security module]", to completely
+            deny the module_request permission to containers.
+
+    4. Restricting network access.
+        - "Network policies" for a namespace allow application authors to restrict which pods in other namespaces can access pods and ports   in their namespace. 
+        -  Quota and limit ranges.
+
+    5. Restricting cloud metadata
+    6. Controlling which nodes can pod access
+        - Using "nodeSelector" [field in podSpec]
+            - Add a label to the node. 
+            - Use that label in the podSpect as for "nodeSelector".
+            - nodeSelector:
+                label1: <value> 
+        - Node isolation and restriction
+            - Choose labels that cannot be modified by kubelet process. 
+            - "NodeRestriction" admission plugin prevents kubelets from setting or modifying labels 
+                with prefix "node-restriction.kubernetes.io/" 
+        - taint based pod placement and eviction
+        - "PodNodeSelector" [beta admission plugin] admission controller can be used to force pods from a namespace can be placed on a particular node or require  a node selector.
+
+    7. Affinity and Anti-affinity
+        - The affinity/anti-affinity language is more expressive. The language offers more matching rules besides exact matches created with a logical AND operation;
+        - You can indicate that the rule is "soft"/"preference" rather than a hard requirement, so if the scheduler can't satisfy it, the pod will still be scheduled;
+        - You can constrain against labels on other pods running on the node (or other topological domain), rather than against labels on the node itself, which allows rules about which pods can and cannot be co-located.
+        
+        - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+    
+  4. Protecting cluster components from compromise
+      1. Restrict access to etcd.
+      2. Enable audit logging.
+      3. Restrict access to alpha or beta features.
+      4. Encrypt secrets at rest. 
+      5. Review 3rd party integrations before enabling them. 
+
+  5. Encrypt data at rest: The kube-apiserver process accepts an argument --encryption-provider-config that controls how API data is encrypted in etcd.
+
+  6. Auditing: https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
+      Kubernetes auditing provides a security-relevant, chronological set of records documenting the sequence of actions in a cluster.
+      Audits following activities:
+        1. audit the activities generated by user.
+        2. by applications that use kube-api server 
+        3. by control plane itself
+      
+      1. Audit records being their life cycle inside kube-apiserver. 
+      2. Each requests on each stage generates an audit event. 
+      3. Defined stages are
+          1. RequestReceived
+          2. ResponseStarted
+          3. ResponseComplete
+          4. Panic
+      
+      Audit logging increases memory consumption of the API server because some context required for auditing is stored in each request. 
+
+      4. Audit Policy
+        1. None
+        2. Metadata
+        3. Request
+        4. RequestResponse
+
+    You can pass a file with the policy to kube-apiserver using the --audit-policy-file flag. 
+    If the flag is omitted, no events are logged. 
+    --audit-log-path: specifies the log file path that log backend uses to write audit events. 
+          Not specifying this flag disables log   backend. - means standard out
+    --audit-log-maxage: defined the maximum number of days to retain old audit log files
+    --audit-log-maxbackup: defines the maximum number of audit log files to retain
+    --audit-log-maxsize: defines the maximum size in megabytes of the audit log file before it gets rotated
+    
+
+
+    

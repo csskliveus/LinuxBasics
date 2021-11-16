@@ -10,3 +10,8 @@ passwd linuxuser
 usermod -U  [unlock the user account]
 usermod -L [lock user account]
 
+# change owner of the file
+chown
+
+# add user to group
+gpasswd 

@@ -17,6 +17,7 @@ grep -w "boo" file
 
 grep -c 'word' /path/to/file
 # https://www.cyberciti.biz/faq/howto-use-grep-command-in-linux-unix/ 
+# https://swcarpentry.github.io/shell-novice/07-find/index.html
 # Options	Description
 # -i	Ignore case distinctions on Linux and Unix
 # -w	Force PATTERN to match only whole words
@@ -43,6 +44,11 @@ grep -i '^u' /etc/passwd # search for lines which starts with 'u'.
 grep 'h$' /etc/passwd  # search for lines which ends with 'h'.
 
 grep '^T[a-z][^e]' # line starts with T and doesnot ends with E.
+
+#Look for all files in the current directory and in all of its subdirectories
+# in Linux for the word ‘httpd’
+
+ grep -R 'httpd' .
 
 # AWK
   # An AWK program is made up of patterns and actions to be performed when a pattern match is found. 
