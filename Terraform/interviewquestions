@@ -1,0 +1,25 @@
+11/17/2021
+
+1. Some one created vnet manually, now you want to create a VM using terraform. How you will do that ? 
+2. State file securiy/policies ? 
+3. How you are hinding sensitive data ? 
+4. How you are handling rollback in terraform ? 
+5. Created a VM with count of 4. Want to delete VM 3, how you will do that ? 
+6. Created a VM with for_each. Want to delete a VM , how you will do that ? 
+7. Difference between for_each and count ? 
+
+
+Azure
+1. What is difference between event hub and event grid ? 
+2. What is SAS ? 
+3. How application performance can be measured using traffic manager ? 
+4. How just in time access can be given ? 
+5. Soft delete - duration
+6. K8s
+  1. Basic components of k8s. 
+  2. what are 2 diffent types of networking in AKS ? 
+  3. What are daemon sets ? 
+  4. PV and PVC usage and mapping ? 
+7. How back ups are taken for azure sql? 
+8. How to move data from on-prem sql to azure sql ? 
+9. PV to PVC mapping

@@ -121,19 +121,56 @@
 
 mywork = 'Thisismyword'
 
-def evenUpperoddLower(mywork):
-  for i,w in set(mywork):
-    print(i)
-    print(w)
+# def evenUpperoddLower(mywork):
+#   for i,w in set(mywork):
+#     print(i)
+#     print(w)
 
-evenUpperoddLower(mywork)
+# evenUpperoddLower(mywork)
 
+# sampleInput = raw_input()
+# sampleInput = "1"
+# def countOccurrence(sampleInput):
+#     w1 = ''
+#     b = ''
+#     for w in sampleInput:
+#         i=0
+#         wordCount=0
+#        # print(w)
+#         while i < len(sampleInput):
+#             if w == sampleInput[i]:
+#                 wordCount = wordCount + 1
+#             i = i + 1
+#         b = w + str(wordCount)
+#         if w not in w1:
+#           w1 = w1 + b
+#     return w1 
+# print(countOccurrence(sampleInput))
+# mystring="primeCheck"
+# def myfun(mystring):
+#   i = 0 
+#   a = ''
+#   c =''
+#   while i < len(mystring):
+#     if i == 0 and mystring[i].isupper():
+#       c = mystring[i].lower()
+#       a = a + c
+#     elif i != 0 and mystring[i].isupper():
+#       c = "_"+ mystring[i].lower()
+#       a = a + c
+#     else:
+#       a = a + mystring[i]
+#     i = i + 1
+#   return a
+# print(myfun(mystring))
 
   
-  
+numlist = [9,1,2,2]
+numlist.sort()
+print(numlist)
 
-
-
+l1 = (numlist.pop())
+print(len(numlist))
 
 
 

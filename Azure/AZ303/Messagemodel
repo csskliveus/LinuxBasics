@@ -1,0 +1,57 @@
+Use Service Bus topics if you:
+  Need multiple receivers to handle each message
+
+  Topic:
+    1. A topic is similar to a queue but can have multiple subscriptions. 
+    2. This means that multiple destination components can subscribe to a given topic, so each message is delivered to multiple receivers.
+    3. Subscriptions can filter messagees.
+
+
+Use Service Bus queues if you:
+  Need an At-Most-Once delivery guarantee.
+  Need a FIFO guarantee.
+  Need to group messages into transactions.
+  Want to receive messages without polling the queue.
+  Need to provide a role-based access model to the queues.
+  Need to handle messages larger than 64 KB but less than 256 KB.
+  Queue size will not grow larger than 80 GB.
+  Want to publish and consume batches of messages.
+  
+  Queue:
+    1. Simple temporary storage location for messages.
+  
+
+Should a single message be delivered to more than one destination? If so, use a Service Bus topic other wise use queue.
+
+Use Event Grid when you need these features:
+
+  Simplicity: It is straightforward to connect sources to subscribers in Event Grid.
+  Advanced filtering: Subscriptions have close control over the events they receive from a topic.
+  Fan-out: You can subscribe to an unlimited number of endpoints to the same events and topics.
+  Reliability: Event Grid retries event delivery for up to 24 hours for each subscription.
+  Pay-per-event: Pay only for the number of events that you transmit.
+
+EventHubs: 
+
+  Events have the following characteristics:
+    The event may be sent to multiple receivers, or to none at all.
+    Events are often intended to "fan out," or have a large number of subscribers for each publisher.
+    The publisher of the event has no expectation about the action a receiving component takes.
+
+  Choose Event Hubs if:
+    You need to support authenticating a large number of publishers.
+    You need to save a stream of events to Data Lake or Blob storage.
+    You need aggregation or analytics on your event stream.
+    You need reliable messaging or resiliency.
+
+  Partitions
+    As Event Hubs receives communications, it divides them into partitions. Partitions are buffers into which the communications are saved. Because of the event buffers, events are not completely ephemeral, and an event isn't missed just because a subscriber is busy or even offline. The subscriber can always use the buffer to "catch up." By default, events stay in the buffer for 24 hours before they automatically expire.
+
+  Buffer
+    The buffers are called partitions because the data is divided amongst them. Every event hub has at least two partitions, and each partition has a separate set of subscribers.
+
+  Capture
+    Event Hubs can send all your events immediately to Azure Data Lake or Azure Blob storage for inexpensive, permanent persistence.
+
+  Authentication
+    All publishers are authenticated and issued a token. This means Event Hubs can accept events from external devices and mobile apps, without worrying that fraudulent data from pranksters could ruin our analysis.

@@ -1,0 +1,101 @@
+Azure compute services
+  1. Azure virtual machines
+  2. Azure container instances
+  3. Azure app services
+  4. Azure functions
+
+When to use VMs:
+  1. Total control over OS.
+  2. Ability to run custom software.
+  3. Use custom hosting configurations.
+
+  Scale VMS in azure:
+    1. VM scale sets
+    2. Azure batch
+
+  What is azure batch:
+    Large scale parallel and high performance computing HPC batch jobs, with ability to scale to tens,hundreds or thousands of VMs. 
+
+When to use Azure App service: [PAAS][Platform as a service]
+  1. App service enables to
+        - build and host web apps
+        - background jobs
+        - mobile back-ends and RESTful API's 
+
+  2. Automatic scalling and high availability
+
+  3. Types of app services
+      1. Web apps
+      2. API apps
+      3. Webjobs
+      4. Mobile apps
+
+Deploy Azure virtual machines from VHD templates
+https://docs.microsoft.com/en-us/learn/modules/deploy-vms-from-vhd-templates/ 
+https://docs.microsoft.com/en-us/learn/modules/deploy-vms-from-vhd-templates/3-generalize-server-create-image
+Generalize a windows virtual machine:
+  1. Use tools like 'sysprep' to prepare virtual machines for generalization. 
+  2. Sysprep removes server specific information from images, such as 
+             - hostnames
+             - user sign-in information
+             - logs
+             - machine specific identifiers
+  3. Browse to directory  \windows\system32\sysprep.
+  4. Run sysprep.exe
+  5. pop up window will come with shutdown option -> click on
+  6. Stop VM 
+  7. Deallocate VM
+  8. Generalize -  az vm generalize --resource-group <resource group> --name <virtual machine name>
+
+Generalize a linux virtual machine:
+  1. 'waagent' tool to prepare a virtual machine for generalization. 
+  2. 'waagent' does the following
+        - delete user accounts
+        - removing public SSH access
+        - resetting host name
+        - cleaning log files
+  3. Sign into linux machine and run -> waagent -deprovision+user
+  4. Stop VM
+  5. De-allocate
+  6. Generalize 
+
+https://docs.microsoft.com/en-us/learn/modules/intro-to-hpc/2-azure-batch
+Introduction to high performance computing (HPC) on azure. 
+
+Azure Batch:
+  1. Azure batch is used for large-scale parallel and computationally intensive tasks on azure.
+  2. Batch is a managed service. 
+
+Azure VM HPC instances:
+  1. H-Series VMs
+      1. Azure H-series VMs are a family of the most powerful and fastest CPU-based VMs on Azure
+           high CPU frequencies
+           large amounts of memory per core
+  2. HB series
+      1. HB-series VMs specifically target applications requiring 
+            1. extreme memory bandwidth, 
+            2. particularly fluid dynamics, 
+            3. explicit finite element analysis
+            4. and weather modeling
+  3. HC series
+      1. HC-series VMs are optimized for applications driven by 
+            1. dense computation, such as implicit finite element analysis
+            2. reservoir simulation, and computational chemistry.
+
+N Series VMs: 
+  1. Some HPC tasks are both compute-intensive and graphics-intensive.
+
+NC-series VM: 
+  1. lowest cost of the N-series tiers, but VMs in this tier are capable of graphics-intensive       applications.
+
+ND-series VM: 
+  1. VMs are optimized for AI and deep learning workloads.
+
+HPC Pack: https://docs.microsoft.com/en-us/learn/modules/intro-to-hpc/4-microsoft-hpc-pack
+  1. HPC Pack offers a series of installers for Windows that allows you to configure your own control and management plane, and highly flexible deployments of on-premises and cloud nodes.
+  
+  Common HPC use cases:
+  1. Finite element analysis
+  2. 3D modeling
+  3. DNA analysis
+  4. Computer aided design

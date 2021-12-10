@@ -371,21 +371,26 @@
 # extending to the next 7 (every 6 will be followed by at least one 7). Return 0 for no numbers.
 #sum67([1, 2, 2, 6, 99, 99, 7]) → 5
 
-def sum67(nums):
-  i=0
-  j=0
-  sum =0 
-  while i < len(nums):
-    if nums[i]==6:
-      while j < len(nums):
-        if nums[j]==7:
-          break
-        j = j+1
-      i = i + (j-i)
-    else:
-      sum = sum + 0
-    i = i + 1
-  return sum
+# def sum67(nums):
+#   i=0
+#   j=0
+#   sum =0 
+#   while i < len(nums):
+#     if nums[i]==6:
+#       while j < len(nums):
+#         if nums[j]==7:
+#           break
+#         j = j+1
+#       i = i + (j-i)
+#     else:
+#       sum = sum + 0
+#     i = i + 1
+#   return sum
 
-nums=[1, 2, 2, 6, 99, 99, 7]
-print(sum67(nums))
+# nums=[1, 2, 2, 6, 99, 99, 7]
+# print(sum67(nums))
+
+
+
+
+

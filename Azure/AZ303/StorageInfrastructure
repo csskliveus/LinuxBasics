@@ -1,0 +1,123 @@
+Data types of azure storage services
+  1. Blobs
+  2. Files
+  3. Queues
+  4. Table storage
+
+Blobs: A massive scalable object store for text and binary data. 
+Files: Managed files shares.
+Queues: A messaging store
+Table Store: A NoSQL store for schema less storage of structured data. 
+
+Blobs:
+  Block Blobs: 
+  Blob storage is an object storage solution optimized for massive amounts of unstructured data ,such as text.
+  Holds data upto 5 TB
+  Page Blobs:
+  Page blobs are used primarily as the backing storage for VHD's used to provide durable disks for azure virtual machines. 
+  Provides random read/write access. 
+  Append Blobs:
+    Optimized for append operations
+
+Files:
+  1. Azure files storage enables you to set up highly available n/w file shares that can be accessed using the standard SMB protocol. 
+  2. Multiple VM's can access same files share. 
+  purpose:
+   1. Storing shared configuration files for VMs. 
+   2. Log files such as diagnostics, metrics and crash dumps. 
+   3. Shared data between on-premises applications and azure vms.
+
+Queues:
+  1. Queue message can be upto 64 kb and queue can contain millions of messages. 
+
+Shared access signature:
+ 1. Access keys are the easiest approach to authenticating access to a storage account. 
+ 2. Support expiration and limited permissions.
+
+Account failover:
+ 1. Second region becomes primary region. Failover is automatic and Microsoft handles failover. 
+
+Design a resilient application:  https://docs.microsoft.com/en-us/learn/modules/ha-application-storage-with-grs/4-design-applications-ha-dr
+ 1. Resiliency: Ability to recover from failure. 
+ 2. High availability
+ 3. Disaster recovery
+ 4. Eventual consistency
+      Eventual consistency means that all the transactions on the primary region will eventually appear in the secondary region
+      Data is not lost, but there might be some lag. 
+ 5. RAGRS - Read access - geo redundant storage
+ 6. Retry and circuit breaker patterns
+
+Storage account security
+  1. Data at rest: 
+    All data written to azure storage account is automatically encrypted by Storage Service Encryption (SSE). 
+    VHDS are encrypted using Azure disk encryption. 
+          bitlocker - windows image
+          dm-crypt - linux
+        
+  2. Data in transit:
+      Enabling transport-level security between Azure and the client.
+
+  3. SAS - Shared access signature
+  4. Azure defender for azure storage account "Enable Azure Defender for Storage." 
+
+CORS support:
+
+
+Choose the right disk storage:
+ Roles of disks in VM.
+  1. OS disk: One disk in each virtual machine contains the operating system files. Max capacity of 4 TB. 
+  2. Data Disk: One or more data disks to each virtual machine to store data. 
+  3. Temporary disk: Used for short-term storage. 
+
+  OS disks are ephemeral
+
+ Managed Disks:
+  1. Azure manages all the required physical infrastructure. 
+  2. Benefits of managed disks:
+       1. Simple scalability
+       2. High availability
+       3. Integration with availability sets and zones
+       4. Support for azure backup
+       5. Granular access control
+       6. Support for encryption
+  3. Benefits of unmanaged disks
+       1. Create and maintain this storage account manually. 
+
+Disk performance measures:
+  1. Performance is expressed in 2 key measures. 
+     1. Input/ouput operations per second. (IOPS) [Rate at which disk can complete read and write operations.]
+     2. Throughput. [Rate at which data can be moved onto the disk from the host computer and off the disk to host computer.]
+                   measured in MBPS [Mega bytes per second].
+  Disk types:
+     1. SSD [Solid state drives] Realize higher IOPS and throughput than hard disk drives. 
+     2. HDD [Hard disk drives] 
+     3. Ultra disks [Ultra disk drives] [Highest disk performance available in Azure].
+          - Supports 4 GB - 64 TB
+          - Can only be attached to VM in availability zones.
+          - Can only be used as Data disks and can only be created as empty disks.
+          - They dont support 'disk snapshots', 'azure disk encryption', 'azure backup' or 'azure site recovery'. 
+          - Can be attached to VM with out shutting down VM. 
+    https://docs.microsoft.com/en-us/learn/modules/choose-the-right-disk-storage-for-vm-workload/3-disk-types-for-virtual-machines 
+
+    Premium SSD: 
+     1. Next tier down Ultra disks in terms of performance. 
+     2. Can't adjust performance with out detaching from VM.
+     3. Good fit for mission critical work loads. 
+     4. Performance numbers are guaranteed. 
+
+    Standard SSD:
+     1. Standard SSD's are a cost-effective storage option for VM that need consistent performance at lower speeds.
+     2. Performance numbers are not guaranteed. 
+
+    Standard HDD:
+     1. Data stored on conventional magnetic disk drives with moving spindles. 
+
+Understanding storage analytics metrics: 
+
+  1. Transaction metrics
+  2. Capacity metrics
+      Capacity, which records the sum total of the storage occupied by the blobs in your storage account.
+      Container count, which shows how many containers have been created across blob storage in your storage account.
+      Object count, which displays the total number of blobs created across all of your containers.
+
+

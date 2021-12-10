@@ -1,0 +1,6 @@
+
+1. Control and organize Azure resources with Azure Resource Manager
+  1. Use tagging to organize resources.
+  2. Use policies to enforce standards. 
+  3. Secure resources with RBAC.
+  4. Use resource locks to protect resources. 
